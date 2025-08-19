@@ -123,7 +123,6 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
 }
 
 .nav-list {
@@ -132,7 +131,6 @@ body {
     margin: 0;
     display: flex;
     gap: 30px;
-    flex-wrap: wrap;
 }
 
 .nav-list a {
@@ -333,7 +331,21 @@ body[data-theme="dark"] .footer {
     color: var(--text-color);
 }
 
-/* Responsividad */
+
+/* -- Responsividad (Ajustes para Móviles) -- */
+.hamburger-menu {
+    display: none; /* Ocultar por defecto */
+}
+
+.logo-mobile {
+    display: none; /* Ocultar por defecto */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
 @media (max-width: 768px) {
     .header-container {
         flex-direction: column;
@@ -342,19 +354,64 @@ body[data-theme="dark"] .footer {
     .header-title {
         font-size: 2.5em;
     }
-    .nav-list {
-        flex-direction: column;
-        gap: 15px;
-    }
     .section-title {
         font-size: 2em;
     }
+    
+    /* Configuración del menú móvil */
     .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .nav-list, .nav-right {
+        display: none; /* Oculta ambos menús por defecto en móviles */
+        width: 100%; /* Ocupa todo el ancho */
+        text-align: center;
+        background-color: var(--card-bg); /* Mismo fondo de la navbar */
         flex-direction: column;
+        gap: 0;
+    }
+
+    .nav-list a {
+        display: block;
+        padding: 15px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    .nav-list a::after {
+        display: none; /* Oculta la línea de hover en móviles */
+    }
+    
+    .nav-right {
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        padding-top: 10px;
+        padding-bottom: 10px;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .social-icons-nav, .theme-switcher-nav {
+        display: flex;
+        justify-content: center;
         gap: 15px;
     }
-    .nav-right {
-        justify-content: center;
-        margin-top: 10px;
+
+    /* Mostrar el botón de hamburguesa y el logo móvil */
+    .hamburger-menu, .logo-mobile {
+        display: block;
+    }
+    .hamburger-menu {
+        background: none;
+        border: none;
+        color: var(--primary-color);
+        font-size: 1.8em;
+        cursor: pointer;
+    }
+
+    /* Clases para mostrar el menú cuando esté activo */
+    .navbar.active .nav-list, .navbar.active .nav-right {
+        display: flex;
     }
 }
