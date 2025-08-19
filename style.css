@@ -4,9 +4,9 @@
     --primary-color: #2c3e50;
     --secondary-color: #34495e;
     --accent-color: #3498db;
-    --background-color: #f0f2f5; /* Nuevo color de fondo */
+    --background-color: #f0f2f5;
     --text-color: #333;
-    --card-bg: #fff; /* Las tarjetas se mantienen blancas para el contraste */
+    --card-bg: #fff;
     --shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
@@ -230,7 +230,8 @@ body[data-theme="dark"] .theme-switcher-nav button:hover {
 }
 
 /* Estilos Específicos */
-.job-card, .education-card {
+.job-card,
+.education-card {
     background-color: var(--card-bg);
     padding: 30px;
     margin-bottom: 30px;
@@ -240,12 +241,14 @@ body[data-theme="dark"] .theme-switcher-nav button:hover {
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.5s ease;
 }
 
-.job-card:hover, .education-card:hover {
+.job-card:hover,
+.education-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
 }
 
-.job-card h3, .education-card h3 {
+.job-card h3,
+.education-card h3 {
     margin: 0 0 5px 0;
     color: var(--secondary-color);
 }
@@ -334,11 +337,11 @@ body[data-theme="dark"] .footer {
 
 /* -- Responsividad (Ajustes para Móviles) -- */
 .hamburger-menu {
-    display: none; /* Ocultar por defecto */
+    display: none;
 }
 
 .logo-mobile {
-    display: none; /* Ocultar por defecto */
+    display: none;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
     font-size: 1.5rem;
@@ -358,20 +361,22 @@ body[data-theme="dark"] .footer {
         font-size: 2em;
     }
     
-    /* Configuración del menú móvil */
     .nav-container {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        flex-wrap: wrap; /* Permitir que los elementos se envuelvan */
     }
 
-    .nav-list, .nav-right {
-        display: none; /* Oculta ambos menús por defecto en móviles */
-        width: 100%; /* Ocupa todo el ancho */
+    .nav-list,
+    .nav-right {
+        display: none;
+        width: 100%;
         text-align: center;
-        background-color: var(--card-bg); /* Mismo fondo de la navbar */
-        flex-direction: column;
+        background-color: var(--card-bg);
+        flex-direction: column; /* Apilar verticalmente */
         gap: 0;
+        order: 2; /* Colocar debajo del botón hamburguesa */
     }
 
     .nav-list a {
@@ -381,27 +386,33 @@ body[data-theme="dark"] .footer {
     }
     
     .nav-list a::after {
-        display: none; /* Oculta la línea de hover en móviles */
+        display: none;
     }
     
     .nav-right {
         border-top: 1px solid rgba(0, 0, 0, 0.1);
         padding-top: 10px;
         padding-bottom: 10px;
-        flex-direction: row;
+        flex-direction: column; /* Apilar verticalmente */
         justify-content: center;
+        align-items: center;
+        gap: 10px;
     }
 
-    .social-icons-nav, .theme-switcher-nav {
+    .social-icons-nav,
+    .theme-switcher-nav {
         display: flex;
         justify-content: center;
         gap: 15px;
+        width: 100%; /* Ocupar todo el ancho disponible */
     }
 
-    /* Mostrar el botón de hamburguesa y el logo móvil */
-    .hamburger-menu, .logo-mobile {
+    .hamburger-menu,
+    .logo-mobile {
         display: block;
+        order: 1; /* Colocar en la parte superior */
     }
+
     .hamburger-menu {
         background: none;
         border: none;
@@ -410,8 +421,8 @@ body[data-theme="dark"] .footer {
         cursor: pointer;
     }
 
-    /* Clases para mostrar el menú cuando esté activo */
-    .navbar.active .nav-list, .navbar.active .nav-right {
+    .navbar.active .nav-list,
+    .navbar.active .nav-right {
         display: flex;
     }
 }

@@ -1,46 +1,47 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const lightBtn = document.getElementById('light-mode-btn');
-    const darkBtn = document.getElementById('dark-mode-btn');
-    const systemBtn = document.getElementById('system-mode-btn');
+    // --- Lógica para el menú de hamburguesa ---
+    const hamburgerMenu = document.getElementById('hamburger-menu');
+    const navbar = document.querySelector('.navbar');
+
+    hamburgerMenu.addEventListener('click', () => {
+        navbar.classList.toggle('active');
+    });
+
+    // Cerrar el menú si se hace clic en un enlace del menú
+    const navLinks = document.querySelectorAll('.nav-list a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            navbar.classList.remove('active');
+        });
+    });
+
+    // --- Lógica para el cambio de tema ---
+    const lightModeBtn = document.getElementById('light-mode-btn');
+    const darkModeBtn = document.getElementById('dark-mode-btn');
+    const systemModeBtn = document.getElementById('system-mode-btn');
     const body = document.body;
 
     // Función para aplicar el tema
-    const setTheme = (theme) => {
-        body.setAttribute('data-theme', theme);
+    function setTheme(theme) {
+        body.dataset.theme = theme;
         localStorage.setItem('theme', theme);
-    };
+    }
 
-    // Cargar el tema guardado en localStorage al iniciar
+    // Cargar el tema al iniciar la página
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
         setTheme(savedTheme);
     } else {
-        // Si no hay tema guardado, usar la preferencia del sistema
-        const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-        if (prefersDarkScheme.matches) {
-            setTheme('dark');
-        } else {
-            setTheme('light');
-        }
+        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        setTheme(systemTheme);
     }
 
-    // Escuchadores de eventos para los botones
-    lightBtn.addEventListener('click', () => {
-        setTheme('light');
-    });
-
-    darkBtn.addEventListener('click', () => {
-        setTheme('dark');
-    });
-
-    systemBtn.addEventListener('click', () => {
-        // Eliminar el tema guardado para que vuelva a usar la preferencia del sistema
+    // Escuchadores de eventos para los botones de tema
+    lightModeBtn.addEventListener('click', () => setTheme('light'));
+    darkModeBtn.addEventListener('click', () => setTheme('dark'));
+    systemModeBtn.addEventListener('click', () => {
         localStorage.removeItem('theme');
-        const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-        if (prefersDarkScheme.matches) {
-            setTheme('dark');
-        } else {
-            setTheme('light');
-        }
+        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        setTheme(systemTheme);
     });
 });
