@@ -31,20 +31,23 @@
             </button>
 
             <ul class="nav-list" id="nav-list">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#experiencia">Experiencia</a></li>
-                <li><a href="#formacion">Formación</a></li>
-                <li><a href="#habilidades">Habilidades</a></li>
-                <li><a href="#certificaciones">Certificaciones</a></li>
-                <li><a href="#sobre-mi">Sobre Mí</a></li>
+                <li><a href="#inicio" data-i18n="nav.home">Inicio</a></li>
+                <li><a href="#experiencia" data-i18n="nav.experience">Experiencia</a></li>
+                <li><a href="#formacion" data-i18n="nav.education">Formación</a></li>
+                <li><a href="#habilidades" data-i18n="nav.skills">Habilidades</a></li>
+                <li><a href="#certificaciones" data-i18n="nav.certifications">Certificaciones</a></li>
+                <li><a href="#sobre-mi" data-i18n="nav.about">Sobre Mí</a></li>
             </ul>
 
             <div class="nav-actions">
                 <div class="theme-toggle" id="theme-toggle" title="Cambiar tema">
                     <i class="fas fa-sun" id="theme-icon"></i>
                 </div>
+                <div class="language-toggle" id="language-toggle" title="Cambiar idioma">
+                    <span id="language-icon">ES</span>
+                </div>
                 <a href="mailto:figallojorge@gmail.com" class="btn btn-primary nav-cta">
-                    <i class="fas fa-envelope"></i> Contactar
+                    <i class="fas fa-envelope"></i> <span data-i18n="nav.contact">Contactar</span>
                 </a>
             </div>
         </div>
@@ -56,17 +59,17 @@
         <div class="container hero-container">
             <div class="hero-content">
                 <div class="hero-badge">
-                    <i class="fas fa-rocket"></i> Disponible para nuevos proyectos
+                    <i class="fas fa-rocket"></i> <span data-i18n="hero.badge">Disponible para nuevos proyectos</span>
                 </div>
                 <h1 class="hero-title">
-                    <span class="greeting">¡Hola! Soy</span>
+                    <span class="greeting" data-i18n="hero.greeting">¡Hola! Soy</span>
                     <span class="name">Jorge Angel Figallo Mesta</span>
                 </h1>
                 <p class="hero-subtitle">
-                    <span class="typing-text">Ingeniero de Sistemas</span> &
-                    <span class="highlight">QA Specialist</span>
+                    <span class="typing-text" data-i18n="hero.role1">Ingeniero de Sistemas</span> &
+                    <span class="highlight" data-i18n="hero.role2">QA Specialist</span>
                 </p>
-                <p class="hero-description">
+                <p class="hero-description" data-i18n="hero.description">
                     Profesional dinámico con experiencia en el sector clínico y TI. Especializado en testing de
                     software,
                     gestión de bases de datos SQL, soporte de sistemas ERP (SAP Business One) y automatización de
@@ -76,10 +79,10 @@
                 <div class="hero-cta">
                     <a href="https://drive.google.com/drive/folders/1dxnH8mFEA18HHpyjgZ78JyEVPkj_vnNW?usp=sharing"
                         target="_blank" class="btn btn-primary btn-lg">
-                        <i class="fas fa-download"></i> Descargar CV
+                        <i class="fas fa-download"></i> <span data-i18n="hero.download_cv">Descargar CV</span>
                     </a>
                     <a href="#experiencia" class="btn btn-outline btn-lg">
-                        <i class="fas fa-briefcase"></i> Ver Experiencia
+                        <i class="fas fa-briefcase"></i> <span data-i18n="hero.view_experience">Ver Experiencia</span>
                     </a>
                 </div>
                 <div class="hero-social">
@@ -116,7 +119,7 @@
             </div>
         </div>
         <div class="scroll-indicator">
-            <span>Scroll</span>
+            <span data-i18n="hero.scroll">Scroll</span>
             <i class="fas fa-chevron-down"></i>
         </div>
     </header>
@@ -127,19 +130,19 @@
             <div class="stats-grid">
                 <div class="stat-item">
                     <span class="stat-number">4+</span>
-                    <span class="stat-label">Años de Experiencia</span>
+                    <span class="stat-label" data-i18n="stats.years">Años de Experiencia</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-number">15+</span>
-                    <span class="stat-label">Tecnologías</span>
+                    <span class="stat-label" data-i18n="stats.tech">Tecnologías</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-number">SAP</span>
-                    <span class="stat-label">Business One</span>
+                    <span class="stat-label" data-i18n="stats.sap">Business One</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-number">🏆</span>
-                    <span class="stat-label">Mejor Trabajo en Equipo</span>
+                    <span class="stat-label" data-i18n="stats.teamwork">Mejor Trabajo en Equipo</span>
                 </div>
             </div>
         </div>
@@ -149,9 +152,11 @@
     <section id="experiencia" class="section">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag"><i class="fas fa-briefcase"></i> Trayectoria Profesional</span>
-                <h2 class="section-title">Experiencia Laboral</h2>
-                <p class="section-subtitle">Mi recorrido profesional en el sector tecnológico y clínico</p>
+                <span class="section-tag"><i class="fas fa-briefcase"></i> <span
+                        data-i18n="section.experience_tag">Trayectoria Profesional</span></span>
+                <h2 class="section-title" data-i18n="section.experience_title">Experiencia Laboral</h2>
+                <p class="section-subtitle" data-i18n="section.experience_subtitle">Mi recorrido profesional en el
+                    sector tecnológico y clínico</p>
             </div>
 
             <div class="timeline">
@@ -166,44 +171,65 @@
                                 <span class="timeline-location"><i class="fas fa-map-marker-alt"></i> Piura, Perú</span>
                             </div>
                             <span class="timeline-date">
-                                <i class="fas fa-calendar"></i> 2021 - Actualidad
+                                <i class="fas fa-calendar"></i> <span data-i18n="experience.carita_feliz.date">2021 -
+                                    Actualidad</span>
                             </span>
                         </div>
 
                         <div class="achievement-badge">
-                            <i class="fas fa-trophy"></i> Reconocido como "Mejor Trabajo en Equipo" - Abril 2025
+                            <i class="fas fa-trophy"></i> <span data-i18n="experience.carita_feliz.award">Reconocido
+                                como "Mejor Trabajo en Equipo" - Abril 2025</span>
                         </div>
 
                         <div class="experience-card">
-                            <h4><i class="fas fa-database"></i> Soporte de Bases de Datos & ERP</h4>
+                            <h4><i class="fas fa-database"></i> <span data-i18n="experience.carita_feliz.role1">Soporte
+                                    de Bases de Datos & ERP</span></h4>
                             <ul>
-                                <li>Gestión y soporte con <strong>DataGrip, MySQL y SQL Server</strong></li>
-                                <li>Administración de <strong>SAP Business One Client</strong></li>
-                                <li>Consultas SQL para generación de reportes y filtrado de información</li>
-                                <li>Migración y sincronización de datos entre SAP y sistema clínico</li>
-                                <li>Creación y gestión de datos maestros y proveedores</li>
+                                <li data-i18n="experience.carita_feliz.task1_1">Gestión y soporte con <strong>DataGrip,
+                                        MySQL y SQL Server</strong></li>
+                                <li data-i18n="experience.carita_feliz.task1_2">Administración de <strong>SAP Business
+                                        One Client</strong></li>
+                                <li data-i18n="experience.carita_feliz.task1_3">Consultas SQL para generación de
+                                    reportes y filtrado de información</li>
+                                <li data-i18n="experience.carita_feliz.task1_4">Migración y sincronización de datos
+                                    entre SAP y sistema clínico</li>
+                                <li data-i18n="experience.carita_feliz.task1_5">Creación y gestión de datos maestros y
+                                    proveedores</li>
                             </ul>
                         </div>
 
                         <div class="experience-card">
-                            <h4><i class="fas fa-bug"></i> Testing & Calidad de Software (QA)</h4>
+                            <h4><i class="fas fa-bug"></i> <span data-i18n="experience.carita_feliz.role2">Testing &
+                                    Calidad de Software (QA)</span></h4>
                             <ul>
-                                <li>Pruebas rigurosas de módulos para identificar y documentar errores</li>
-                                <li>Gestión de incidencias con <strong>Jira</strong> y seguimiento de bugs</li>
-                                <li>Uso de inspector de código y <strong>Termius</strong> para análisis detallado</li>
-                                <li>Colaboración con desarrolladores Java para resolver problemas</li>
-                                <li>Implementación de cambios y ejecución de scripts</li>
+                                <li data-i18n="experience.carita_feliz.task2_1">Pruebas rigurosas de módulos para
+                                    identificar y documentar errores</li>
+                                <li data-i18n="experience.carita_feliz.task2_2">Gestión de incidencias con
+                                    <strong>Jira</strong> y seguimiento de bugs
+                                </li>
+                                <li data-i18n="experience.carita_feliz.task2_3">Uso de inspector de código y
+                                    <strong>Termius</strong> para análisis detallado
+                                </li>
+                                <li data-i18n="experience.carita_feliz.task2_4">Colaboración con desarrolladores Java
+                                    para resolver problemas</li>
+                                <li data-i18n="experience.carita_feliz.task2_5">Implementación de cambios y ejecución de
+                                    scripts</li>
                             </ul>
                         </div>
 
                         <div class="experience-card">
-                            <h4><i class="fas fa-server"></i> Soporte TI & Infraestructura</h4>
+                            <h4><i class="fas fa-server"></i> <span data-i18n="experience.carita_feliz.role3">Soporte TI
+                                    & Infraestructura</span></h4>
                             <ul>
-                                <li>Soporte técnico de hardware, software y redes</li>
-                                <li>Configuración y manejo de cámaras DVR/NVR</li>
-                                <li>Servidores Linux (NTP, DNS, DHCP) y Windows Server 2012</li>
-                                <li>Firewall Fortinet</li>
-                                <li>Desarrollo con PHP, JavaScript, Python, C# para automatización</li>
+                                <li data-i18n="experience.carita_feliz.task3_1">Soporte técnico de hardware, software y
+                                    redes</li>
+                                <li data-i18n="experience.carita_feliz.task3_2">Configuración y manejo de cámaras
+                                    DVR/NVR</li>
+                                <li data-i18n="experience.carita_feliz.task3_3">Servidores Linux (NTP, DNS, DHCP) y
+                                    Windows Server 2012</li>
+                                <li data-i18n="experience.carita_feliz.task3_4">Firewall Fortinet</li>
+                                <li data-i18n="experience.carita_feliz.task3_5">Desarrollo con PHP, JavaScript, Python,
+                                    C# para automatización</li>
                             </ul>
                         </div>
                     </div>
@@ -226,13 +252,17 @@
                         </div>
 
                         <div class="experience-card">
-                            <h4><i class="fas fa-tools"></i> Soporte Técnico y Sistemas</h4>
+                            <h4><i class="fas fa-tools"></i> <span data-i18n="experience.primax.role">Soporte Técnico y
+                                    Sistemas</span></h4>
                             <ul>
-                                <li>Operaciones de soporte técnico y sistema ERP</li>
-                                <li>Soporte de cámaras y mantenimiento de hardware/software</li>
-                                <li>Instalación de redes</li>
-                                <li>Servidores Linux (NTP, DNS, DHCP) y Windows Server 2012</li>
-                                <li>Configuración de Firewall Fortinet</li>
+                                <li data-i18n="experience.primax.task1">Operaciones de soporte técnico y sistema ERP
+                                </li>
+                                <li data-i18n="experience.primax.task2">Soporte de cámaras y mantenimiento de
+                                    hardware/software</li>
+                                <li data-i18n="experience.primax.task3">Instalación de redes</li>
+                                <li data-i18n="experience.primax.task4">Servidores Linux (NTP, DNS, DHCP) y Windows
+                                    Server 2012</li>
+                                <li data-i18n="experience.primax.task5">Configuración de Firewall Fortinet</li>
                             </ul>
                         </div>
                     </div>
@@ -254,11 +284,12 @@
                         </div>
 
                         <div class="experience-card">
-                            <h4><i class="fas fa-user-headset"></i> Operador</h4>
+                            <h4><i class="fas fa-user-headset"></i> <span
+                                    data-i18n="experience.comdata.role">Operador</span></h4>
                             <ul>
-                                <li>Gestión de interacción con clientes</li>
-                                <li>Manejo de procesos operativos</li>
-                                <li>Atención y servicio al cliente</li>
+                                <li data-i18n="experience.comdata.task1">Gestión de interacción con clientes</li>
+                                <li data-i18n="experience.comdata.task2">Manejo de procesos operativos</li>
+                                <li data-i18n="experience.comdata.task3">Atención y servicio al cliente</li>
                             </ul>
                         </div>
                     </div>
@@ -271,9 +302,11 @@
     <section id="formacion" class="section section-alt">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag"><i class="fas fa-graduation-cap"></i> Educación</span>
-                <h2 class="section-title">Formación Académica</h2>
-                <p class="section-subtitle">Mi trayectoria educativa y formación profesional</p>
+                <span class="section-tag"><i class="fas fa-graduation-cap"></i> <span
+                        data-i18n="section.education_tag">Educación</span></span>
+                <h2 class="section-title" data-i18n="section.education_title">Formación Académica</h2>
+                <p class="section-subtitle" data-i18n="section.education_subtitle">Mi trayectoria educativa y formación
+                    profesional</p>
             </div>
 
             <div class="education-grid">
@@ -283,9 +316,10 @@
                     </div>
                     <div class="education-content">
                         <span class="education-date">2023 - Actualidad</span>
-                        <h3>Ingeniería Informática</h3>
-                        <p class="education-institution">Universidad César Vallejo (UCV)</p>
-                        <span class="education-status">En curso</span>
+                        <h3 data-i18n="education.ucv.degree">Ingeniería Informática</h3>
+                        <p class="education-institution" data-i18n="education.ucv.institution">Universidad César Vallejo
+                            (UCV)</p>
+                        <span class="education-status" data-i18n="education.ucv.status">En curso</span>
                     </div>
                 </div>
 
@@ -295,8 +329,9 @@
                     </div>
                     <div class="education-content">
                         <span class="education-date">2018</span>
-                        <h3>Ingeniería Informática</h3>
-                        <p class="education-institution">Universidad Nacional de Piura (UNP)</p>
+                        <h3 data-i18n="education.unp.degree">Ingeniería Informática</h3>
+                        <p class="education-institution" data-i18n="education.unp.institution">Universidad Nacional de
+                            Piura (UNP)</p>
                     </div>
                 </div>
 
@@ -306,9 +341,9 @@
                     </div>
                     <div class="education-content">
                         <span class="education-date">2014 - 2017</span>
-                        <h3>Técnico en Análisis de Sistemas</h3>
-                        <p class="education-institution">ETSUNP</p>
-                        <span class="education-status completed">Titulado</span>
+                        <h3 data-i18n="education.etsunp.degree">Técnico en Análisis de Sistemas</h3>
+                        <p class="education-institution" data-i18n="education.etsunp.institution">ETSUNP</p>
+                        <span class="education-status completed" data-i18n="education.etsunp.status">Titulado</span>
                     </div>
                 </div>
 
@@ -318,9 +353,10 @@
                     </div>
                     <div class="education-content">
                         <span class="education-date">2018</span>
-                        <h3>Cisco Networking CCNA</h3>
-                        <p class="education-institution">Universidad de Piura (UDEP)</p>
-                        <span class="education-status completed">Certificado</span>
+                        <h3 data-i18n="education.cisco.degree">Cisco Networking CCNA</h3>
+                        <p class="education-institution" data-i18n="education.cisco.institution">Universidad de Piura
+                            (UDEP)</p>
+                        <span class="education-status completed" data-i18n="education.cisco.status">Certificado</span>
                     </div>
                 </div>
 
@@ -330,8 +366,9 @@
                     </div>
                     <div class="education-content">
                         <span class="education-date">2018</span>
-                        <h3>Ofimática Avanzada</h3>
-                        <p class="education-institution">Word, Excel, PowerPoint, Access</p>
+                        <h3 data-i18n="education.office.degree">Ofimática Avanzada</h3>
+                        <p class="education-institution" data-i18n="education.office.institution">Word, Excel,
+                            PowerPoint, Access</p>
                     </div>
                 </div>
 
@@ -341,9 +378,10 @@
                     </div>
                     <div class="education-content">
                         <span class="education-date">2023</span>
-                        <h3>Lenguaje Python</h3>
-                        <p class="education-institution">Certificación Profesional</p>
-                        <span class="education-status completed">Certificado</span>
+                        <h3 data-i18n="education.python.degree">Lenguaje Python</h3>
+                        <p class="education-institution" data-i18n="education.python.institution">Certificación
+                            Profesional</p>
+                        <span class="education-status completed" data-i18n="education.python.status">Certificado</span>
                     </div>
                 </div>
             </div>
@@ -354,9 +392,10 @@
     <section id="habilidades" class="section">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag"><i class="fas fa-cogs"></i> Competencias</span>
-                <h2 class="section-title">Habilidades</h2>
-                <p class="section-subtitle">Tecnologías y herramientas que domino</p>
+                <span class="section-tag"><i class="fas fa-cogs"></i> <span
+                        data-i18n="section.skills_tag">Competencias</span></span>
+                <h2 class="section-title" data-i18n="section.skills_title">Habilidades</h2>
+                <p class="section-subtitle" data-i18n="skills.subtitle">Tecnologías y herramientas que domino</p>
             </div>
 
             <div class="skills-container">
@@ -365,7 +404,7 @@
                         <div class="skill-icon">
                             <i class="fas fa-code"></i>
                         </div>
-                        <h3>Lenguajes & Frameworks</h3>
+                        <h3 data-i18n="skills.languages">Lenguajes & Frameworks</h3>
                     </div>
                     <div class="skill-tags">
                         <span class="skill-tag">Python</span>
@@ -384,7 +423,7 @@
                         <div class="skill-icon">
                             <i class="fas fa-database"></i>
                         </div>
-                        <h3>Bases de Datos</h3>
+                        <h3 data-i18n="skills.databases">Bases de Datos</h3>
                     </div>
                     <div class="skill-tags">
                         <span class="skill-tag">MySQL</span>
@@ -400,7 +439,7 @@
                         <div class="skill-icon">
                             <i class="fas fa-vial"></i>
                         </div>
-                        <h3>QA & DevOps</h3>
+                        <h3 data-i18n="skills.qa">QA & DevOps</h3>
                     </div>
                     <div class="skill-tags">
                         <span class="skill-tag">Jira</span>
@@ -419,7 +458,7 @@
                         <div class="skill-icon">
                             <i class="fas fa-cloud"></i>
                         </div>
-                        <h3>Cloud & Servidores</h3>
+                        <h3 data-i18n="skills.cloud">Cloud & Servidores</h3>
                     </div>
                     <div class="skill-tags">
                         <span class="skill-tag">AWS Cloud</span>
@@ -435,7 +474,7 @@
                         <div class="skill-icon">
                             <i class="fas fa-tools"></i>
                         </div>
-                        <h3>Herramientas</h3>
+                        <h3 data-i18n="skills.tools">Herramientas</h3>
                     </div>
                     <div class="skill-tags">
                         <span class="skill-tag">Visual Studio Code</span>
@@ -452,7 +491,7 @@
                         <div class="skill-icon">
                             <i class="fas fa-user-tie"></i>
                         </div>
-                        <h3>Habilidades Personales</h3>
+                        <h3 data-i18n="skills.soft_skills">Habilidades Personales</h3>
                     </div>
                     <div class="skill-tags soft-skills">
                         <span class="skill-tag">Comunicación Efectiva</span>
@@ -473,25 +512,28 @@
     <section id="certificaciones" class="section section-alt">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag"><i class="fas fa-certificate"></i> Certificaciones</span>
-                <h2 class="section-title">Certificaciones & Capacitaciones</h2>
-                <p class="section-subtitle">Formación especializada y actualización profesional continua</p>
+                <span class="section-tag"><i class="fas fa-certificate"></i> <span
+                        data-i18n="section.certifications_tag">Certificaciones</span></span>
+                <h2 class="section-title" data-i18n="section.certifications_title">Certificaciones & Capacitaciones</h2>
+                <p class="section-subtitle" data-i18n="section.certifications_subtitle">Formación especializada y
+                    actualización profesional continua</p>
             </div>
 
             <div class="certification-grid">
                 <div class="cert-card featured-cert">
-                    <div class="cert-badge">⭐ Destacado</div>
+                    <div class="cert-badge">⭐ <span data-i18n="certifications.featured">Destacado</span></div>
                     <div class="cert-icon">
                         <i class="fas fa-vial"></i>
                     </div>
-                    <h3>Testing & QA</h3>
-                    <p class="cert-issuer">NTT DATA - 2025</p>
+                    <h3 data-i18n="certifications.testing.title">Testing & QA</h3>
+                    <p class="cert-issuer" data-i18n="certifications.testing.issuer">NTT DATA - 2025</p>
                     <ul>
-                        <li>Metodologías ágiles y control de calidad</li>
-                        <li>Técnicas: Partición de equivalencia, valores límite</li>
-                        <li>Testing de API con Postman y Bruno</li>
-                        <li>Automatización con Gherkin y Serenity BDD</li>
-                        <li>Gestión de defectos y seguimiento</li>
+                        <li data-i18n="certifications.testing.item1">Metodologías ágiles y control de calidad</li>
+                        <li data-i18n="certifications.testing.item2">Técnicas: Partición de equivalencia, valores límite
+                        </li>
+                        <li data-i18n="certifications.testing.item3">Testing de API con Postman y Bruno</li>
+                        <li data-i18n="certifications.testing.item4">Automatización con Gherkin y Serenity BDD</li>
+                        <li data-i18n="certifications.testing.item5">Gestión de defectos y seguimiento</li>
                     </ul>
                 </div>
 
@@ -499,12 +541,12 @@
                     <div class="cert-icon">
                         <i class="fas fa-shield-alt"></i>
                     </div>
-                    <h3>ISO 45001:2018</h3>
-                    <p class="cert-issuer">ICC Adviser - 2020</p>
+                    <h3 data-i18n="certifications.iso.title">ISO 45001:2018</h3>
+                    <p class="cert-issuer" data-i18n="certifications.iso.issuer">ICC Adviser - 2020</p>
                     <ul>
-                        <li>Interpretación de la norma ISO 45001</li>
-                        <li>Sistemas de gestión de seguridad y salud</li>
-                        <li>8 horas académicas</li>
+                        <li data-i18n="certifications.iso.item1">Interpretación de la norma ISO 45001</li>
+                        <li data-i18n="certifications.iso.item2">Sistemas de gestión de seguridad y salud</li>
+                        <li data-i18n="certifications.iso.item3">8 horas académicas</li>
                     </ul>
                 </div>
 
@@ -512,12 +554,12 @@
                     <div class="cert-icon">
                         <i class="fab fa-python"></i>
                     </div>
-                    <h3>Python</h3>
-                    <p class="cert-issuer">Certificación 2023</p>
+                    <h3 data-i18n="certifications.python.title">Python</h3>
+                    <p class="cert-issuer" data-i18n="certifications.python.issuer">Certificación 2023</p>
                     <ul>
-                        <li>Programación en Python</li>
-                        <li>32 horas lectivas</li>
-                        <li>Automatización de procesos</li>
+                        <li data-i18n="certifications.python.item1">Programación en Python</li>
+                        <li data-i18n="certifications.python.item2">32 horas lectivas</li>
+                        <li data-i18n="certifications.python.item3">Automatización de procesos</li>
                     </ul>
                 </div>
 
@@ -525,12 +567,12 @@
                     <div class="cert-icon">
                         <i class="fas fa-network-wired"></i>
                     </div>
-                    <h3>Cisco CCNA</h3>
-                    <p class="cert-issuer">UDEP - 2018</p>
+                    <h3 data-i18n="certifications.cisco.title">Cisco CCNA</h3>
+                    <p class="cert-issuer" data-i18n="certifications.cisco.issuer">UDEP - 2018</p>
                     <ul>
-                        <li>Networking fundamentals</li>
-                        <li>Configuración de redes</li>
-                        <li>Routing y switching</li>
+                        <li data-i18n="certifications.cisco.item1">Networking fundamentals</li>
+                        <li data-i18n="certifications.cisco.item2">Configuración de redes</li>
+                        <li data-i18n="certifications.cisco.item3">Routing y switching</li>
                     </ul>
                 </div>
             </div>
@@ -541,15 +583,17 @@
     <section id="sobre-mi" class="section">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag"><i class="fas fa-user"></i> Conóceme</span>
-                <h2 class="section-title">Sobre Mí</h2>
+                <span class="section-tag"><i class="fas fa-user"></i> <span
+                        data-i18n="section.about_tag">Conóceme</span></span>
+                <h2 class="section-title" data-i18n="section.about_title">Sobre Mí</h2>
             </div>
 
             <div class="about-content">
                 <div class="about-text">
                     <div class="objective-box">
-                        <h3><i class="fas fa-bullseye"></i> Objetivo Profesional</h3>
-                        <p>
+                        <h3><i class="fas fa-bullseye"></i> <span data-i18n="about.objective_title">Objetivo
+                                Profesional</span></h3>
+                        <p data-i18n="about.p1">
                             Busco oportunidades que me permitan continuar desarrollando mis habilidades en el área de
                             sistemas y programación, contribuyendo con mis conocimientos en soporte clínico, testing de
                             software
@@ -559,21 +603,21 @@
                         </p>
                     </div>
 
-                    <p>
+                    <p data-i18n="about.p2">
                         Soy un profesional joven con grandes expectativas de superación, dinámico, sociable y con un
                         amplio
                         interés en la tecnología. El <strong>buen trato, la paciencia, la responsabilidad y la
                             honestidad</strong>
                         son características innatas en mi persona.
                     </p>
-                    <p>
+                    <p data-i18n="about.p3">
                         Mi experiencia dual en el <strong>sector clínico y de tecnología de la información</strong> me
                         ha permitido
                         desarrollar un enfoque integral en la solución de problemas. He trabajado en soporte de sistemas
                         ERP,
                         gestión de bases de datos y testing de software, siempre buscando optimizar procesos.
                     </p>
-                    <p>
+                    <p data-i18n="about.p4">
                         Soy <strong>proactivo y perseverante</strong>, con una gran pasión por el aprendizaje continuo.
                         Mi capacidad para trabajar bajo presión y en equipos multidisciplinarios me ha permitido
                         colaborar eficientemente en la resolución de desafíos complejos.
@@ -583,43 +627,43 @@
                     <div class="highlight-item">
                         <i class="fas fa-map-marker-alt"></i>
                         <div>
-                            <strong>Ubicación</strong>
-                            <span>Piura - Perú</span>
+                            <strong data-i18n="about.location_label">Ubicación</strong>
+                            <span data-i18n="about.location_value">Piura - Perú</span>
                         </div>
                     </div>
                     <div class="highlight-item">
                         <i class="fas fa-graduation-cap"></i>
                         <div>
-                            <strong>Formación</strong>
-                            <span>Técnico en Análisis de Sistemas (Titulado)</span>
+                            <strong data-i18n="about.education_label">Formación</strong>
+                            <span data-i18n="about.education_value">Técnico en Análisis de Sistemas (Titulado)</span>
                         </div>
                     </div>
                     <div class="highlight-item">
                         <i class="fas fa-briefcase"></i>
                         <div>
-                            <strong>Especialidad</strong>
-                            <span>QA Testing & Soporte TI</span>
+                            <strong data-i18n="about.specialty_label">Especialidad</strong>
+                            <span data-i18n="about.specialty_value">QA Testing & Soporte TI</span>
                         </div>
                     </div>
                     <div class="highlight-item">
                         <i class="fas fa-language"></i>
                         <div>
-                            <strong>Idiomas</strong>
-                            <span>Español (Nativo), Inglés (Intermedio)</span>
+                            <strong data-i18n="about.languages_label">Idiomas</strong>
+                            <span data-i18n="about.languages_value">Español (Nativo), Inglés (Intermedio)</span>
                         </div>
                     </div>
                     <div class="highlight-item">
                         <i class="fas fa-car"></i>
                         <div>
-                            <strong>Licencias</strong>
-                            <span>Auto A-1, Moto</span>
+                            <strong data-i18n="about.licenses_label">Licencias</strong>
+                            <span data-i18n="about.licenses_value">Auto A-1, Moto</span>
                         </div>
                     </div>
                     <div class="highlight-item">
                         <i class="fas fa-clock"></i>
                         <div>
-                            <strong>Disponibilidad</strong>
-                            <span>15 días | Piura, Híbrido, Remoto</span>
+                            <strong data-i18n="about.availability_label">Disponibilidad</strong>
+                            <span data-i18n="about.availability_value">15 días | Piura, Híbrido, Remoto</span>
                         </div>
                     </div>
                 </div>
@@ -631,8 +675,8 @@
     <section class="cta-section">
         <div class="container">
             <div class="cta-content">
-                <h2>¿Listo para trabajar juntos?</h2>
-                <p>Estoy disponible para nuevas oportunidades laborales. ¡Hablemos!</p>
+                <h2 data-i18n="cta.title">¿Listo para trabajar juntos?</h2>
+                <p data-i18n="cta.text">Estoy disponible para nuevas oportunidades laborales. ¡Hablemos!</p>
                 <div class="cta-buttons">
                     <a href="mailto:figallojorge@gmail.com" class="btn btn-primary btn-lg">
                         <i class="fas fa-envelope"></i> figallojorge@gmail.com
@@ -660,12 +704,12 @@
                     <span>Jorge Angel Figallo Mesta</span>
                 </div>
                 <div class="footer-links">
-                    <a href="#inicio">Inicio</a>
-                    <a href="#experiencia">Experiencia</a>
-                    <a href="#formacion">Formación</a>
-                    <a href="#habilidades">Habilidades</a>
-                    <a href="#certificaciones">Certificaciones</a>
-                    <a href="#sobre-mi">Sobre Mí</a>
+                    <a href="#inicio" data-i18n="nav.home">Inicio</a>
+                    <a href="#experiencia" data-i18n="nav.experience">Experiencia</a>
+                    <a href="#formacion" data-i18n="nav.education">Formación</a>
+                    <a href="#habilidades" data-i18n="nav.skills">Habilidades</a>
+                    <a href="#certificaciones" data-i18n="nav.certifications">Certificaciones</a>
+                    <a href="#sobre-mi" data-i18n="nav.about">Sobre Mí</a>
                 </div>
                 <div class="footer-social">
                     <a href="https://www.linkedin.com/in/jorge-figallo-mesta-baab26234/" target="_blank"><i
@@ -676,7 +720,8 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Jorge Angel Figallo Mesta. Todos los derechos reservados.</p>
+                <p data-i18n="footer.copyright">&copy; 2025 Jorge Angel Figallo Mesta. Todos los derechos reservados.
+                </p>
             </div>
         </div>
     </footer>

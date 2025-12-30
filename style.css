@@ -1395,3 +1395,25 @@ ul {
         justify-content: center;
     }
 }
+
+/* Language Toggle */
+.language-toggle {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    cursor: pointer;
+    color: var(--text-secondary);
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.language-toggle:hover {
+    background: var(--bg-tertiary);
+    color: var(--accent-primary);
+}
