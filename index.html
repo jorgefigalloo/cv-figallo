@@ -1,732 +1,906 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="CV de Jorge Angel Figallo Mesta - Ingeniero de Sistemas especializado en QA, Testing de Software, Soporte TI y Gestión de Bases de Datos. Piura, Perú.">
-    <title>Jorge Figallo Mesta | Ingeniero de Sistemas & QA Specialist</title>
+        content="Jorge Figallo M. — Bachiller en Ingeniería de Sistemas. Full Stack Junior (React, TypeScript, Node.js, Java, Supabase), QA Testing, SQL/ETL y Soporte TI. Piura, Perú.">
+    <title>Jorge Figallo M. | Full Stack Junior · QA · Soporte TI</title>
+    <script>
+        (function () {
+            try {
+                var saved = localStorage.getItem('cv_theme_pref');
+                var theme = saved === 'light' ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', theme);
+                document.documentElement.classList.add('js-ready');
+            } catch (e) {}
+        })();
+    </script>
+    <link rel="preload" as="image" href="imagenes/avatar-pass.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="stylesheet" href="style.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preload" as="style"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" as="style"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    </noscript>
+    <script src="script.js" defer></script>
 </head>
 
 <body>
+    <!-- Ambient Cursor Aura (GPU transform only) -->
+    <div class="cursor-aura" id="cursor-aura" aria-hidden="true"></div>
 
-    <!-- Navbar -->
-    <nav class="navbar" id="navbar">
-        <div class="container nav-container">
-            <a href="#inicio" class="logo">
-                <span class="logo-icon">JF</span>
-                <span class="logo-text">Jorge Figallo</span>
+    <!-- Top Scroll Progress Line -->
+    <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+    <!-- Minimal Fixed Navbar -->
+    <nav class="navbar" id="navbar" aria-label="Navegación principal" data-i18n-aria="nav.aria">
+        <div class="container nav-inner">
+            <a href="#inicio" class="nav-brand">
+                <span class="brand-mark">JF</span>
+                <span>Jorge Figallo M.</span>
             </a>
 
-            <button class="hamburger-menu" id="hamburger-menu" aria-label="Menú">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
-
-            <ul class="nav-list" id="nav-list">
-                <li><a href="#inicio" data-i18n="nav.home">Inicio</a></li>
-                <li><a href="#experiencia" data-i18n="nav.experience">Experiencia</a></li>
-                <li><a href="#formacion" data-i18n="nav.education">Formación</a></li>
-                <li><a href="#habilidades" data-i18n="nav.skills">Habilidades</a></li>
-                <li><a href="#certificaciones" data-i18n="nav.certifications">Certificaciones</a></li>
-                <li><a href="#sobre-mi" data-i18n="nav.about">Sobre Mí</a></li>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#inicio" class="nav-link active" data-i18n="nav.home">Inicio</a></li>
+                <li><a href="#experiencia" class="nav-link" data-i18n="nav.experience">Experiencia</a></li>
+                <li><a href="#proyectos" class="nav-link" data-i18n="nav.projects">Proyectos</a></li>
+                <li><a href="#habilidades" class="nav-link" data-i18n="nav.skills">Stack</a></li>
+                <li><a href="#formacion" class="nav-link" data-i18n="nav.education">Formación</a></li>
+                <li><a href="#contacto" class="nav-link" data-i18n="nav.contact">Contacto</a></li>
             </ul>
 
-            <div class="nav-actions">
-                <div class="theme-toggle" id="theme-toggle" title="Cambiar tema">
-                    <i class="fas fa-sun" id="theme-icon"></i>
-                </div>
-                <div class="language-toggle" id="language-toggle" title="Cambiar idioma">
+            <div class="nav-utils">
+                <button type="button" class="util-btn cmd-btn" id="cmd-trigger" aria-label="Abrir paleta de comandos"
+                    title="Paleta de comandos (Ctrl+K)" data-i18n-aria="nav.cmd_aria" data-i18n-title="nav.cmd_title">
+                    <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <polyline points="4 17 10 11 4 5"></polyline>
+                        <line x1="12" y1="19" x2="20" y2="19"></line>
+                    </svg>
+                    <span class="cmd-kbd" id="cmd-shortcut-label">Ctrl K</span>
+                </button>
+                <button type="button" class="util-btn lang-btn" id="language-toggle" aria-label="Cambiar idioma"
+                    title="Cambiar idioma" data-i18n-aria="nav.lang_aria" data-i18n-title="nav.lang_aria">
                     <span id="language-icon">ES</span>
-                </div>
-                <a href="mailto:figallojorge@gmail.com" class="btn btn-primary nav-cta">
-                    <i class="fas fa-envelope"></i> <span data-i18n="nav.contact">Contactar</span>
-                </a>
+                </button>
+                <button type="button" class="util-btn theme-btn" id="theme-toggle" aria-label="Cambiar tema"
+                    title="Cambiar tema" data-i18n-aria="nav.theme_aria" data-i18n-title="nav.theme_aria">
+                    <svg class="svg-icon" id="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+                    </svg>
+                    <svg class="svg-icon" id="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden>
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <span class="theme-label" id="theme-label">Claro</span>
+                </button>
+                <button type="button" class="util-btn hamburger-btn" id="hamburger-menu" aria-label="Abrir menú"
+                    aria-expanded="false" aria-controls="mobile-nav" data-i18n-aria="nav.menu_aria">
+                    <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
             </div>
+        </div>
+
+        <div class="mobile-nav" id="mobile-nav" hidden>
+            <a href="#inicio" data-i18n="nav.home">Inicio</a>
+            <a href="#experiencia" data-i18n="nav.experience">Experiencia</a>
+            <a href="#proyectos" data-i18n="nav.projects">Proyectos</a>
+            <a href="#habilidades" data-i18n="nav.skills">Stack</a>
+            <a href="#formacion" data-i18n="nav.education">Formación</a>
+            <a href="#contacto" data-i18n="nav.contact">Contacto</a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Editorial + Fotocheck 3D Interactivo -->
     <header class="hero" id="inicio">
-        <div class="hero-bg"></div>
-        <div class="container hero-container">
-            <div class="hero-content">
-                <div class="hero-badge">
-                    <i class="fas fa-rocket"></i> <span data-i18n="hero.badge">Disponible para nuevos proyectos</span>
-                </div>
-                <h1 class="hero-title">
-                    <span class="greeting" data-i18n="hero.greeting">¡Hola! Soy</span>
-                    <span class="name">Jorge Angel Figallo Mesta</span>
-                </h1>
-                <p class="hero-subtitle">
-                    <span class="typing-text" data-i18n="hero.role1">Ingeniero de Sistemas</span> &
-                    <span class="highlight" data-i18n="hero.role2">QA Specialist</span>
+        <div class="hero-grid-bg" aria-hidden="true"></div>
+
+        <div class="container hero-layout">
+            <!-- Columna Izquierda: Presentación Editorial (visible al instante en 0ms) -->
+            <div class="hero-copy">
+                <p class="hero-eyebrow hero-settle" data-i18n="hero.eyebrow">
+                    PIURA, PERÚ · REMOTO / HÍBRIDO
                 </p>
-                <p class="hero-description" data-i18n="hero.description">
-                    Profesional dinámico con experiencia en el sector clínico y TI. Especializado en testing de
-                    software,
-                    gestión de bases de datos SQL, soporte de sistemas ERP (SAP Business One) y automatización de
-                    procesos.
-                    Pro-activo y perseverante, con capacidad para trabajar bajo presión en equipos multidisciplinarios.
+
+                <h1 class="hero-name hero-settle">Jorge Figallo M.</h1>
+
+                <p class="hero-role hero-settle" data-i18n="hero.role">
+                    Full Stack Junior · QA · Soporte TI
                 </p>
-                <div class="hero-cta">
+
+                <p class="hero-bio hero-settle" data-i18n="hero.bio">
+                    Bachiller en Ingeniería de Sistemas con más de 5 años en soporte TI, bases de datos SQL e
+                    integración con <strong>SAP Business One</strong>. Desarrollo aplicaciones full-stack con
+                    <strong>React, TypeScript, Node.js, Java y Supabase</strong>, y ejecuto pruebas funcionales y de
+                    APIs (<strong>Postman, Bruno, Gherkin, Serenity BDD</strong>).
+                </p>
+
+                <div class="hero-ctas hero-settle">
                     <a href="https://drive.google.com/drive/folders/1dxnH8mFEA18HHpyjgZ78JyEVPkj_vnNW?usp=sharing"
-                        target="_blank" class="btn btn-primary btn-lg">
-                        <i class="fas fa-download"></i> <span data-i18n="hero.download_cv">Descargar CV</span>
+                        target="_blank" rel="noopener noreferrer" class="btn btn-solid">
+                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M12 5v14M5 12l7 7 7-7"></path>
+                        </svg>
+                        <span data-i18n="actions.download_cv">Descargar CV</span>
                     </a>
-                    <a href="#experiencia" class="btn btn-outline btn-lg">
-                        <i class="fas fa-briefcase"></i> <span data-i18n="hero.view_experience">Ver Experiencia</span>
+                    <button type="button" class="btn btn-subtle copy-email-btn"
+                        data-copy-email="figallojorge@gmail.com">
+                        <svg class="svg-icon icon-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        <svg class="svg-icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <span data-i18n="actions.copy_email">Copiar email</span>
+                    </button>
+                    <a href="#proyectos" class="btn btn-link">
+                        <span data-i18n="hero.view_projects">Ver proyectos</span>
+                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
                     </a>
                 </div>
-                <div class="hero-social">
+
+                <div class="hero-socials hero-settle">
                     <a href="https://www.linkedin.com/in/jorge-figallo-mesta-baab26234/" target="_blank"
-                        class="social-link" title="LinkedIn">
-                        <i class="fab fa-linkedin-in"></i>
+                        rel="noopener noreferrer" class="social-icon" title="LinkedIn" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in" aria-hidden="true"></i>
                     </a>
-                    <a href="https://github.com/jorgefigalloo" target="_blank" class="social-link" title="GitHub">
-                        <i class="fab fa-github"></i>
+                    <a href="https://github.com/jorgefigalloo" target="_blank" rel="noopener noreferrer"
+                        class="social-icon" title="GitHub" aria-label="GitHub">
+                        <i class="fab fa-github" aria-hidden="true"></i>
                     </a>
-                    <a href="mailto:figallojorge@gmail.com" class="social-link" title="Email">
-                        <i class="fas fa-envelope"></i>
+                    <a href="https://wa.me/51920025691?text=Hola%20Jorge%2C%20vi%20tu%20CV%20web%20y%20me%20gustar%C3%ADa%20contactarte."
+                        target="_blank" rel="noopener noreferrer" class="social-icon" title="WhatsApp"
+                        aria-label="WhatsApp">
+                        <i class="fab fa-whatsapp" aria-hidden="true"></i>
                     </a>
+                    <a href="mailto:figallojorge@gmail.com" class="social-icon" title="Email" aria-label="Email">
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
                     </a>
+                    <button type="button" class="social-icon" id="print-cv-btn" title="Imprimir / Guardar PDF"
+                        aria-label="Imprimir o guardar PDF" data-i18n-aria="actions.print_aria"
+                        data-i18n-title="actions.print_aria">
+                        <i class="fas fa-print" aria-hidden="true"></i>
+                    </button>
+                </div>
+
+                <div class="hero-facts hero-settle">
+                    <div class="fact-item">
+                        <span class="fact-val" data-i18n="hero.fact1_val">5+ años TI</span>
+                        <span class="fact-label" data-i18n="hero.fact1_label">Soporte, BD, ERP y QA</span>
+                    </div>
+                    <div class="fact-item">
+                        <span class="fact-val" data-i18n="hero.fact2_val">UCV / UNP</span>
+                        <span class="fact-label" data-i18n="hero.fact2_label">Bachiller Sistemas · Técnico</span>
+                    </div>
+                    <div class="fact-item">
+                        <span class="fact-val" data-i18n="hero.fact3_val">ES Nativo · EN B1</span>
+                        <span class="fact-label" data-i18n="hero.fact3_label">Remoto · Híbrido · Piura</span>
+                    </div>
                 </div>
             </div>
-            <div class="hero-image-wrapper">
-                <div class="hero-image-container">
-                    <img src="imagenes/yo-anime.jpeg" alt="Jorge Angel Figallo Mesta" class="hero-image">
-                    <div class="hero-image-ring"></div>
+
+            <!-- Columna Derecha: Escenario del Fotocheck 3D Colgando -->
+            <div class="hero-badge-col">
+                <div class="lanyard-stage" id="lanyard-stage">
+                    <!-- Cinta Lanyard SVG Dinámica (colores vía CSS variables por tema) -->
+                    <svg class="lanyard-svg" id="lanyard-svg" aria-hidden="true">
+                        <defs>
+                            <linearGradient id="strap-metal" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#64748b" />
+                                <stop offset="45%" stop-color="#e2e8f0" />
+                                <stop offset="100%" stop-color="#475569" />
+                            </linearGradient>
+                        </defs>
+                        <g id="strap-top-mount">
+                            <rect x="-26" y="0" width="52" height="7" rx="2" fill="url(#strap-metal)" />
+                        </g>
+                        <path id="strap-left-body" class="strap-body-a" />
+                        <path id="strap-left-stitch" class="strap-stitch" />
+                        <path id="strap-right-body" class="strap-body-b" />
+                        <path id="strap-right-stitch" class="strap-stitch" />
+                    </svg>
+
+                    <!-- Conjunto Colgante (Clip metálico + Tarjeta 3D doble cara) -->
+                    <div class="badge-rig" id="badge-rig">
+                        <div class="badge-clasp" aria-hidden="true">
+                            <div class="clasp-loop"></div>
+                            <div class="clasp-neck"></div>
+                            <div class="clasp-clamp"></div>
+                        </div>
+
+                        <div class="badge-perspective">
+                            <div class="badge-card" id="badge-card">
+                                <div class="badge-tilt" id="badge-tilt">
+                                    <div class="badge-flipper" id="badge-flipper">
+                                        <!-- Cara Frontal -->
+                                        <div class="badge-face badge-front">
+                                            <div class="badge-holo" aria-hidden="true"></div>
+                                            <div class="badge-slot" aria-hidden="true"></div>
+
+                                            <div class="badge-top-meta">
+                                                <span class="badge-pass-tag">TECH PASS</span>
+                                                <span class="badge-year-tag">2026</span>
+                                            </div>
+
+                                            <div class="badge-photo-frame">
+                                                <img src="imagenes/avatar-pass.jpg" alt="Jorge Figallo M."
+                                                    class="badge-photo" width="140" height="148"
+                                                    fetchpriority="high" decoding="async" draggable="false">
+                                                <span class="photo-corner" aria-hidden="true"></span>
+                                            </div>
+
+                                            <div class="badge-identity">
+                                                <h2 class="badge-holder-name">Jorge Figallo M.</h2>
+                                                <p class="badge-holder-role" data-i18n="badge.role">Full Stack Junior · QA · Soporte TI</p>
+                                                <p class="badge-holder-sub" data-i18n="badge.sub">B.S. Systems Eng. · Piura, PE</p>
+                                            </div>
+
+                                            <div class="badge-divider" aria-hidden="true"></div>
+
+                                            <div class="badge-footer-front">
+                                                <div class="badge-barcode" aria-hidden="true">
+                                                    <span></span><span></span><span></span><span></span><span></span>
+                                                    <span></span><span></span><span></span><span></span><span></span>
+                                                    <span></span><span></span><span></span><span></span>
+                                                </div>
+                                                <div class="badge-code-row">
+                                                    <span class="badge-serial">JF-SYS-26</span>
+                                                    <span class="badge-flip-cue" data-i18n="badge.front_hint">↻ Clic para girar</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Cara Trasera -->
+                                        <div class="badge-face badge-back" aria-hidden="true">
+                                            <div class="badge-holo" aria-hidden="true"></div>
+                                            <div class="badge-slot" aria-hidden="true"></div>
+
+                                            <div class="badge-back-header">
+                                                <span class="brand-mark">JF</span>
+                                                <span class="badge-pass-tag" data-i18n="badge.back_title">CORE STACK & LINKS</span>
+                                            </div>
+
+                                            <div class="badge-back-specs">
+                                                <div class="back-spec">
+                                                    <span class="back-spec-k">Full Stack</span>
+                                                    <span class="back-spec-v">React · TS · Java · Supabase</span>
+                                                </div>
+                                                <div class="back-spec">
+                                                    <span class="back-spec-k">QA & APIs</span>
+                                                    <span class="back-spec-v">Serenity BDD · Gherkin · Postman</span>
+                                                </div>
+                                                <div class="back-spec">
+                                                    <span class="back-spec-k">Data & ERP</span>
+                                                    <span class="back-spec-v">SQL · ETL · SAP Business One</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="badge-back-actions">
+                                                <a href="https://github.com/jorgefigalloo" target="_blank"
+                                                    rel="noopener noreferrer" class="back-btn" tabindex="-1">
+                                                    <i class="fab fa-github" aria-hidden="true"></i>
+                                                    <span>GitHub</span>
+                                                </a>
+                                                <a href="https://www.linkedin.com/in/jorge-figallo-mesta-baab26234/"
+                                                    target="_blank" rel="noopener noreferrer" class="back-btn"
+                                                    tabindex="-1">
+                                                    <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                                                    <span>LinkedIn</span>
+                                                </a>
+                                                <button type="button" class="back-btn copy-email-btn"
+                                                    data-copy-email="figallojorge@gmail.com" tabindex="-1">
+                                                    <svg class="svg-icon icon-copy" viewBox="0 0 24 24" fill="none"
+                                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                        stroke-linejoin="round" aria-hidden="true">
+                                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                                    </svg>
+                                                    <svg class="svg-icon icon-check" viewBox="0 0 24 24" fill="none"
+                                                        stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                                                        stroke-linejoin="round" aria-hidden="true">
+                                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                                    </svg>
+                                                    <span data-i18n="actions.copy_email">Copiar email</span>
+                                                </button>
+                                                <a href="https://drive.google.com/drive/folders/1dxnH8mFEA18HHpyjgZ78JyEVPkj_vnNW?usp=sharing"
+                                                    target="_blank" rel="noopener noreferrer" class="back-btn"
+                                                    tabindex="-1">
+                                                    <i class="fas fa-arrow-down" aria-hidden="true"></i>
+                                                    <span data-i18n="actions.download_cv">Descargar CV</span>
+                                                </a>
+                                            </div>
+
+                                            <div class="badge-footer-back">
+                                                <span data-i18n="badge.back_mode">Remoto / Híbrido</span>
+                                                <span class="badge-flip-cue" data-i18n="badge.back_hint">↻ Volver al frente</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="floating-card card-1">
-                    <i class="fas fa-database"></i>
-                    <span>SQL & Databases</span>
-                </div>
-                <div class="floating-card card-2">
-                    <i class="fas fa-bug"></i>
-                    <span>QA Testing</span>
-                </div>
-                <div class="floating-card card-3">
-                    <i class="fas fa-award"></i>
-                    <span>NTT DATA Certified</span>
+
+                <div class="lanyard-controls">
+                    <span class="lanyard-hint" data-i18n="badge.hint_bar">Arrastra para balancear · Clic para girar</span>
+                    <button type="button" class="flip-pill-btn" id="flip-badge-btn">
+                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M21 2v6h-6"></path>
+                            <path d="M21 13a9 9 0 1 1-3-7.7L21 8"></path>
+                        </svg>
+                        <span data-i18n="badge.flip_btn">Girar pase</span>
+                    </button>
                 </div>
             </div>
-        </div>
-        <div class="scroll-indicator">
-            <span data-i18n="hero.scroll">Scroll</span>
-            <i class="fas fa-chevron-down"></i>
         </div>
     </header>
 
-    <!-- Stats Section -->
-    <section class="stats-section">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <span class="stat-number">4+</span>
-                    <span class="stat-label" data-i18n="stats.years">Años de Experiencia</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">15+</span>
-                    <span class="stat-label" data-i18n="stats.tech">Tecnologías</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">SAP</span>
-                    <span class="stat-label" data-i18n="stats.sap">Business One</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">🏆</span>
-                    <span class="stat-label" data-i18n="stats.teamwork">Mejor Trabajo en Equipo</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experiencia Section -->
-    <section id="experiencia" class="section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag"><i class="fas fa-briefcase"></i> <span
-                        data-i18n="section.experience_tag">Trayectoria Profesional</span></span>
-                <h2 class="section-title" data-i18n="section.experience_title">Experiencia Laboral</h2>
-                <p class="section-subtitle" data-i18n="section.experience_subtitle">Mi recorrido profesional en el
-                    sector tecnológico y clínico</p>
-            </div>
-
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-marker">
-                        <i class="fas fa-hospital"></i>
+    <!-- Editorial CV Body -->
+    <main class="editorial-main">
+        <div class="editorial-container">
+            <!-- 1. Experiencia Laboral -->
+            <section id="experiencia" class="cv-section reveal">
+                <div class="section-head-row">
+                    <h2 class="section-kicker" data-i18n="section.experience">Experiencia Laboral</h2>
+                    <div class="segmented-control exp-filter-bar" role="group"
+                        aria-label="Filtrar áreas de experiencia" data-i18n-aria="experience.filter_aria">
+                        <button type="button" class="seg-btn active" data-exp-filter="all" aria-pressed="true"
+                            data-i18n="experience.filter_all">Todo</button>
+                        <button type="button" class="seg-btn" data-exp-filter="data" aria-pressed="false"
+                            data-i18n="experience.filter_data">Data & SAP</button>
+                        <button type="button" class="seg-btn" data-exp-filter="qa" aria-pressed="false"
+                            data-i18n="experience.filter_qa">QA & Dev</button>
+                        <button type="button" class="seg-btn" data-exp-filter="infra" aria-pressed="false"
+                            data-i18n="experience.filter_infra">Infraestructura</button>
                     </div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <div class="timeline-company">
+                </div>
+
+                <div class="interactive-list exp-list">
+                    <!-- Clínica Carita Feliz -->
+                    <article class="exp-entry">
+                        <div class="entry-aside">
+                            <span class="entry-date" data-i18n="experience.carita_feliz.date">2021 — ACTUALIDAD</span>
+                            <span class="entry-place">Piura, Perú</span>
+                        </div>
+                        <div class="entry-body">
+                            <header class="entry-header">
                                 <h3>Clínica Carita Feliz</h3>
-                                <span class="timeline-location"><i class="fas fa-map-marker-alt"></i> Piura, Perú</span>
+                                <p class="entry-role" data-i18n="experience.carita_feliz.role">
+                                    Soporte de Sistemas / Soporte Clínico y de TI
+                                </p>
+                            </header>
+
+                            <p class="recognition-line">
+                                <i class="fas fa-award" aria-hidden="true"></i>
+                                <span data-i18n="experience.carita_feliz.awards">Reconocimientos: Mejor trabajo en equipo (2025) · Destacado desempeño en sistemas (2023)</span>
+                            </p>
+
+                            <div class="exp-groups">
+                                <div class="exp-group" data-exp-group="data">
+                                    <h4 class="exp-group-label" data-i18n="experience.carita_feliz.group_data">Data, SQL & SAP Business One</h4>
+                                    <ul>
+                                        <li data-i18n="experience.carita_feliz.task1_1">Consultas SQL avanzadas (<strong>MySQL, DataGrip, SQL Server</strong>) para reportes clínicos y filtrado de información.</li>
+                                        <li data-i18n="experience.carita_feliz.task1_2">Procesos ETL, migración y sincronización de datos entre <strong>SAP Business One</strong> y el sistema clínico.</li>
+                                        <li data-i18n="experience.carita_feliz.task1_3">Administración de <strong>SAP Business One Client</strong>, gestión de datos maestros y proveedores.</li>
+                                    </ul>
+                                </div>
+
+                                <div class="exp-group" data-exp-group="qa">
+                                    <h4 class="exp-group-label" data-i18n="experience.carita_feliz.group_qa">QA, Testing & Desarrollo</h4>
+                                    <ul>
+                                        <li data-i18n="experience.carita_feliz.task2_1">Pruebas rigurosas de módulos del sistema clínico usando inspector de código y <strong>Termius</strong> para análisis y resolución de errores.</li>
+                                        <li data-i18n="experience.carita_feliz.task2_2">Colaboración con programadores <strong>Java</strong> en resolución de errores de base de datos, implementación de cambios y scripts.</li>
+                                        <li data-i18n="experience.carita_feliz.task2_3">Automatización y soporte técnico con conocimientos de <strong>PHP, JavaScript, Python y C#</strong>.</li>
+                                        <li data-i18n="experience.carita_feliz.task2_4">Seguimiento de tareas e incidencias con <strong>Jira, Figma e IntelliJ IDEA</strong>.</li>
+                                    </ul>
+                                </div>
+
+                                <div class="exp-group" data-exp-group="infra">
+                                    <h4 class="exp-group-label" data-i18n="experience.carita_feliz.group_infra">Infraestructura & Soporte TI</h4>
+                                    <ul>
+                                        <li data-i18n="experience.carita_feliz.task3_1">Soporte técnico integral: sistema ERP, cámaras de seguridad (<strong>DVR/NVR</strong>), hardware, software y redes.</li>
+                                        <li data-i18n="experience.carita_feliz.task3_2">Administración de servidores <strong>Linux (NTP, DNS, DHCP)</strong> y <strong>Windows Server 2012</strong>.</li>
+                                        <li data-i18n="experience.carita_feliz.task3_3">Gestión del <strong>Firewall Fortinet</strong> para la continuidad operativa de la red.</li>
+                                    </ul>
+                                </div>
                             </div>
-                            <span class="timeline-date">
-                                <i class="fas fa-calendar"></i> <span data-i18n="experience.carita_feliz.date">2021 -
-                                    Actualidad</span>
-                            </span>
-                        </div>
 
-                        <div class="achievement-badge">
-                            <i class="fas fa-trophy"></i> <span data-i18n="experience.carita_feliz.award">Reconocido
-                                como "Mejor Trabajo en Equipo" - Abril 2025</span>
-                        </div>
-
-                        <div class="experience-card">
-                            <h4><i class="fas fa-database"></i> <span data-i18n="experience.carita_feliz.role1">Soporte
-                                    de Bases de Datos & ERP</span></h4>
-                            <ul>
-                                <li data-i18n="experience.carita_feliz.task1_1">Gestión y soporte con <strong>DataGrip,
-                                        MySQL y SQL Server</strong></li>
-                                <li data-i18n="experience.carita_feliz.task1_2">Administración de <strong>SAP Business
-                                        One Client</strong></li>
-                                <li data-i18n="experience.carita_feliz.task1_3">Consultas SQL para generación de
-                                    reportes y filtrado de información</li>
-                                <li data-i18n="experience.carita_feliz.task1_4">Migración y sincronización de datos
-                                    entre SAP y sistema clínico</li>
-                                <li data-i18n="experience.carita_feliz.task1_5">Creación y gestión de datos maestros y
-                                    proveedores</li>
-                            </ul>
-                        </div>
-
-                        <div class="experience-card">
-                            <h4><i class="fas fa-bug"></i> <span data-i18n="experience.carita_feliz.role2">Testing &
-                                    Calidad de Software (QA)</span></h4>
-                            <ul>
-                                <li data-i18n="experience.carita_feliz.task2_1">Pruebas rigurosas de módulos para
-                                    identificar y documentar errores</li>
-                                <li data-i18n="experience.carita_feliz.task2_2">Gestión de incidencias con
-                                    <strong>Jira</strong> y seguimiento de bugs
-                                </li>
-                                <li data-i18n="experience.carita_feliz.task2_3">Uso de inspector de código y
-                                    <strong>Termius</strong> para análisis detallado
-                                </li>
-                                <li data-i18n="experience.carita_feliz.task2_4">Colaboración con desarrolladores Java
-                                    para resolver problemas</li>
-                                <li data-i18n="experience.carita_feliz.task2_5">Implementación de cambios y ejecución de
-                                    scripts</li>
-                            </ul>
-                        </div>
-
-                        <div class="experience-card">
-                            <h4><i class="fas fa-server"></i> <span data-i18n="experience.carita_feliz.role3">Soporte TI
-                                    & Infraestructura</span></h4>
-                            <ul>
-                                <li data-i18n="experience.carita_feliz.task3_1">Soporte técnico de hardware, software y
-                                    redes</li>
-                                <li data-i18n="experience.carita_feliz.task3_2">Configuración y manejo de cámaras
-                                    DVR/NVR</li>
-                                <li data-i18n="experience.carita_feliz.task3_3">Servidores Linux (NTP, DNS, DHCP) y
-                                    Windows Server 2012</li>
-                                <li data-i18n="experience.carita_feliz.task3_4">Firewall Fortinet</li>
-                                <li data-i18n="experience.carita_feliz.task3_5">Desarrollo con PHP, JavaScript, Python,
-                                    C# para automatización</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-marker">
-                        <i class="fas fa-gas-pump"></i>
-                    </div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <div class="timeline-company">
-                                <h3>Grifo Primax - Estación Paita</h3>
-                                <span class="timeline-location"><i class="fas fa-map-marker-alt"></i> Paita,
-                                    Piura</span>
+                            <div class="inline-tags">
+                                <span>SQL</span>
+                                <span>MySQL</span>
+                                <span>SQL Server</span>
+                                <span>DataGrip</span>
+                                <span>SAP Business One</span>
+                                <span>Java</span>
+                                <span>Jira</span>
+                                <span>Termius</span>
+                                <span>Linux</span>
+                                <span>Fortinet</span>
                             </div>
-                            <span class="timeline-date">
-                                <i class="fas fa-calendar"></i> 2020 - 2021
-                            </span>
                         </div>
+                    </article>
 
-                        <div class="experience-card">
-                            <h4><i class="fas fa-tools"></i> <span data-i18n="experience.primax.role">Soporte Técnico y
-                                    Sistemas</span></h4>
-                            <ul>
-                                <li data-i18n="experience.primax.task1">Operaciones de soporte técnico y sistema ERP
-                                </li>
-                                <li data-i18n="experience.primax.task2">Soporte de cámaras y mantenimiento de
-                                    hardware/software</li>
-                                <li data-i18n="experience.primax.task3">Instalación de redes</li>
-                                <li data-i18n="experience.primax.task4">Servidores Linux (NTP, DNS, DHCP) y Windows
-                                    Server 2012</li>
-                                <li data-i18n="experience.primax.task5">Configuración de Firewall Fortinet</li>
-                            </ul>
+                    <!-- Grifo Primax -->
+                    <article class="exp-entry">
+                        <div class="entry-aside">
+                            <span class="entry-date" data-i18n="experience.primax.date">2020 — JUN 2021</span>
+                            <span class="entry-place">Paita, Piura</span>
                         </div>
-                    </div>
-                </div>
+                        <div class="entry-body">
+                            <header class="entry-header">
+                                <h3>Grifo Primax – Estación de Servicios</h3>
+                                <p class="entry-role" data-i18n="experience.primax.role">
+                                    Técnico de Soporte de Sistemas
+                                </p>
+                            </header>
 
-                <div class="timeline-item">
-                    <div class="timeline-marker">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <div class="timeline-company">
-                                <h3>Comdata Group</h3>
-                                <span class="timeline-location"><i class="fas fa-map-marker-alt"></i> Piura, Perú</span>
+                            <div class="exp-groups">
+                                <div class="exp-group">
+                                    <ul>
+                                        <li data-i18n="experience.primax.task1">Soporte técnico a sistema ERP, cámaras de seguridad, hardware, software e infraestructura de red.</li>
+                                        <li data-i18n="experience.primax.task2">Configuración y administración de servidores <strong>Linux (NTP, DNS, DHCP)</strong> y <strong>Windows Server 2012</strong>.</li>
+                                        <li data-i18n="experience.primax.task3">Gestión del <strong>Firewall Fortinet</strong> para garantizar seguridad y disponibilidad de la red.</li>
+                                    </ul>
+                                </div>
                             </div>
-                            <span class="timeline-date">
-                                <i class="fas fa-calendar"></i> 2016 - 2020
-                            </span>
+
+                            <div class="inline-tags">
+                                <span>ERP</span>
+                                <span>Linux NTP/DNS/DHCP</span>
+                                <span>Windows Server 2012</span>
+                                <span>Fortinet</span>
+                                <span>Redes</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- 2. Proyectos -->
+            <section id="proyectos" class="cv-section reveal">
+                <h2 class="section-kicker" data-i18n="section.projects">Proyectos Personales</h2>
+
+                <div class="interactive-list projects-list">
+                    <!-- Proyecto 1 -->
+                    <article class="project-entry">
+                        <div class="project-top">
+                            <div>
+                                <span class="project-type" data-i18n="projects.cafetin.type">Full-Stack · Tiempo Real</span>
+                                <h3 data-i18n="projects.cafetin.title">Sistema de Gestión para Cafetín</h3>
+                            </div>
+                            <!-- Reemplazar con enlace directo al repositorio y URL de Vercel cuando esté publicado -->
+                            <a href="https://github.com/jorgefigalloo" target="_blank" rel="noopener noreferrer"
+                                class="project-ext-link">
+                                <span data-i18n="projects.view_github">Ver código en GitHub</span>
+                                <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                            </a>
                         </div>
 
-                        <div class="experience-card">
-                            <h4><i class="fas fa-user-headset"></i> <span
-                                    data-i18n="experience.comdata.role">Operador</span></h4>
-                            <ul>
-                                <li data-i18n="experience.comdata.task1">Gestión de interacción con clientes</li>
-                                <li data-i18n="experience.comdata.task2">Manejo de procesos operativos</li>
-                                <li data-i18n="experience.comdata.task3">Atención y servicio al cliente</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Formación Académica Section -->
-    <section id="formacion" class="section section-alt">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag"><i class="fas fa-graduation-cap"></i> <span
-                        data-i18n="section.education_tag">Educación</span></span>
-                <h2 class="section-title" data-i18n="section.education_title">Formación Académica</h2>
-                <p class="section-subtitle" data-i18n="section.education_subtitle">Mi trayectoria educativa y formación
-                    profesional</p>
-            </div>
-
-            <div class="education-grid">
-                <div class="education-card featured">
-                    <div class="education-icon">
-                        <i class="fas fa-university"></i>
-                    </div>
-                    <div class="education-content">
-                        <span class="education-date">2023 - Actualidad</span>
-                        <h3 data-i18n="education.ucv.degree">Ingeniería Informática</h3>
-                        <p class="education-institution" data-i18n="education.ucv.institution">Universidad César Vallejo
-                            (UCV)</p>
-                        <span class="education-status" data-i18n="education.ucv.status">En curso</span>
-                    </div>
-                </div>
-
-                <div class="education-card featured">
-                    <div class="education-icon">
-                        <i class="fas fa-university"></i>
-                    </div>
-                    <div class="education-content">
-                        <span class="education-date">2018</span>
-                        <h3 data-i18n="education.unp.degree">Ingeniería Informática</h3>
-                        <p class="education-institution" data-i18n="education.unp.institution">Universidad Nacional de
-                            Piura (UNP)</p>
-                    </div>
-                </div>
-
-                <div class="education-card">
-                    <div class="education-icon">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <div class="education-content">
-                        <span class="education-date">2014 - 2017</span>
-                        <h3 data-i18n="education.etsunp.degree">Técnico en Análisis de Sistemas</h3>
-                        <p class="education-institution" data-i18n="education.etsunp.institution">ETSUNP</p>
-                        <span class="education-status completed" data-i18n="education.etsunp.status">Titulado</span>
-                    </div>
-                </div>
-
-                <div class="education-card">
-                    <div class="education-icon">
-                        <i class="fas fa-network-wired"></i>
-                    </div>
-                    <div class="education-content">
-                        <span class="education-date">2018</span>
-                        <h3 data-i18n="education.cisco.degree">Cisco Networking CCNA</h3>
-                        <p class="education-institution" data-i18n="education.cisco.institution">Universidad de Piura
-                            (UDEP)</p>
-                        <span class="education-status completed" data-i18n="education.cisco.status">Certificado</span>
-                    </div>
-                </div>
-
-                <div class="education-card">
-                    <div class="education-icon">
-                        <i class="fas fa-file-alt"></i>
-                    </div>
-                    <div class="education-content">
-                        <span class="education-date">2018</span>
-                        <h3 data-i18n="education.office.degree">Ofimática Avanzada</h3>
-                        <p class="education-institution" data-i18n="education.office.institution">Word, Excel,
-                            PowerPoint, Access</p>
-                    </div>
-                </div>
-
-                <div class="education-card">
-                    <div class="education-icon">
-                        <i class="fab fa-python"></i>
-                    </div>
-                    <div class="education-content">
-                        <span class="education-date">2023</span>
-                        <h3 data-i18n="education.python.degree">Lenguaje Python</h3>
-                        <p class="education-institution" data-i18n="education.python.institution">Certificación
-                            Profesional</p>
-                        <span class="education-status completed" data-i18n="education.python.status">Certificado</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Habilidades Section -->
-    <section id="habilidades" class="section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag"><i class="fas fa-cogs"></i> <span
-                        data-i18n="section.skills_tag">Competencias</span></span>
-                <h2 class="section-title" data-i18n="section.skills_title">Habilidades</h2>
-                <p class="section-subtitle" data-i18n="skills.subtitle">Tecnologías y herramientas que domino</p>
-            </div>
-
-            <div class="skills-container">
-                <div class="skill-group">
-                    <div class="skill-group-header">
-                        <div class="skill-icon">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <h3 data-i18n="skills.languages">Lenguajes & Frameworks</h3>
-                    </div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">Java</span>
-                        <span class="skill-tag">JavaScript</span>
-                        <span class="skill-tag">C#</span>
-                        <span class="skill-tag">PHP</span>
-                        <span class="skill-tag">Node.js</span>
-                        <span class="skill-tag">Angular.js</span>
-                        <span class="skill-tag">Kotlin</span>
-                    </div>
-                </div>
-
-                <div class="skill-group">
-                    <div class="skill-group-header">
-                        <div class="skill-icon">
-                            <i class="fas fa-database"></i>
-                        </div>
-                        <h3 data-i18n="skills.databases">Bases de Datos</h3>
-                    </div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">MySQL</span>
-                        <span class="skill-tag">SQL Server</span>
-                        <span class="skill-tag">PostgreSQL</span>
-                        <span class="skill-tag">DataGrip</span>
-                        <span class="skill-tag">PgAdmin</span>
-                    </div>
-                </div>
-
-                <div class="skill-group">
-                    <div class="skill-group-header">
-                        <div class="skill-icon">
-                            <i class="fas fa-vial"></i>
-                        </div>
-                        <h3 data-i18n="skills.qa">QA & DevOps</h3>
-                    </div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Jira</span>
-                        <span class="skill-tag">Jenkins</span>
-                        <span class="skill-tag">Postman</span>
-                        <span class="skill-tag">Bruno</span>
-                        <span class="skill-tag">Git</span>
-                        <span class="skill-tag">GitHub</span>
-                        <span class="skill-tag">Serenity BDD</span>
-                        <span class="skill-tag">Gherkin</span>
-                    </div>
-                </div>
-
-                <div class="skill-group">
-                    <div class="skill-group-header">
-                        <div class="skill-icon">
-                            <i class="fas fa-cloud"></i>
-                        </div>
-                        <h3 data-i18n="skills.cloud">Cloud & Servidores</h3>
-                    </div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">AWS Cloud</span>
-                        <span class="skill-tag">Linux Ubuntu</span>
-                        <span class="skill-tag">Windows Server</span>
-                        <span class="skill-tag">SAP Business One</span>
-                        <span class="skill-tag">Firewall Fortinet</span>
-                    </div>
-                </div>
-
-                <div class="skill-group">
-                    <div class="skill-group-header">
-                        <div class="skill-icon">
-                            <i class="fas fa-tools"></i>
-                        </div>
-                        <h3 data-i18n="skills.tools">Herramientas</h3>
-                    </div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Visual Studio Code</span>
-                        <span class="skill-tag">IntelliJ IDEA</span>
-                        <span class="skill-tag">Android Studio</span>
-                        <span class="skill-tag">Termius</span>
-                        <span class="skill-tag">Figma</span>
-                        <span class="skill-tag">Sublime Text</span>
-                    </div>
-                </div>
-
-                <div class="skill-group">
-                    <div class="skill-group-header">
-                        <div class="skill-icon">
-                            <i class="fas fa-user-tie"></i>
-                        </div>
-                        <h3 data-i18n="skills.soft_skills">Habilidades Personales</h3>
-                    </div>
-                    <div class="skill-tags soft-skills">
-                        <span class="skill-tag">Comunicación Efectiva</span>
-                        <span class="skill-tag">Trabajo en Equipo</span>
-                        <span class="skill-tag">Resolución de Problemas</span>
-                        <span class="skill-tag">Aprendizaje Rápido</span>
-                        <span class="skill-tag">Negociación</span>
-                        <span class="skill-tag">Creatividad</span>
-                        <span class="skill-tag">Proactividad</span>
-                        <span class="skill-tag">Inglés Intermedio</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Certificaciones Section -->
-    <section id="certificaciones" class="section section-alt">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag"><i class="fas fa-certificate"></i> <span
-                        data-i18n="section.certifications_tag">Certificaciones</span></span>
-                <h2 class="section-title" data-i18n="section.certifications_title">Certificaciones & Capacitaciones</h2>
-                <p class="section-subtitle" data-i18n="section.certifications_subtitle">Formación especializada y
-                    actualización profesional continua</p>
-            </div>
-
-            <div class="certification-grid">
-                <div class="cert-card featured-cert">
-                    <div class="cert-badge">⭐ <span data-i18n="certifications.featured">Destacado</span></div>
-                    <div class="cert-icon">
-                        <i class="fas fa-vial"></i>
-                    </div>
-                    <h3 data-i18n="certifications.testing.title">Testing & QA</h3>
-                    <p class="cert-issuer" data-i18n="certifications.testing.issuer">NTT DATA - 2025</p>
-                    <ul>
-                        <li data-i18n="certifications.testing.item1">Metodologías ágiles y control de calidad</li>
-                        <li data-i18n="certifications.testing.item2">Técnicas: Partición de equivalencia, valores límite
-                        </li>
-                        <li data-i18n="certifications.testing.item3">Testing de API con Postman y Bruno</li>
-                        <li data-i18n="certifications.testing.item4">Automatización con Gherkin y Serenity BDD</li>
-                        <li data-i18n="certifications.testing.item5">Gestión de defectos y seguimiento</li>
-                    </ul>
-                </div>
-
-                <div class="cert-card">
-                    <div class="cert-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3 data-i18n="certifications.iso.title">ISO 45001:2018</h3>
-                    <p class="cert-issuer" data-i18n="certifications.iso.issuer">ICC Adviser - 2020</p>
-                    <ul>
-                        <li data-i18n="certifications.iso.item1">Interpretación de la norma ISO 45001</li>
-                        <li data-i18n="certifications.iso.item2">Sistemas de gestión de seguridad y salud</li>
-                        <li data-i18n="certifications.iso.item3">8 horas académicas</li>
-                    </ul>
-                </div>
-
-                <div class="cert-card">
-                    <div class="cert-icon">
-                        <i class="fab fa-python"></i>
-                    </div>
-                    <h3 data-i18n="certifications.python.title">Python</h3>
-                    <p class="cert-issuer" data-i18n="certifications.python.issuer">Certificación 2023</p>
-                    <ul>
-                        <li data-i18n="certifications.python.item1">Programación en Python</li>
-                        <li data-i18n="certifications.python.item2">32 horas lectivas</li>
-                        <li data-i18n="certifications.python.item3">Automatización de procesos</li>
-                    </ul>
-                </div>
-
-                <div class="cert-card">
-                    <div class="cert-icon">
-                        <i class="fas fa-network-wired"></i>
-                    </div>
-                    <h3 data-i18n="certifications.cisco.title">Cisco CCNA</h3>
-                    <p class="cert-issuer" data-i18n="certifications.cisco.issuer">UDEP - 2018</p>
-                    <ul>
-                        <li data-i18n="certifications.cisco.item1">Networking fundamentals</li>
-                        <li data-i18n="certifications.cisco.item2">Configuración de redes</li>
-                        <li data-i18n="certifications.cisco.item3">Routing y switching</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sobre Mí Section -->
-    <section id="sobre-mi" class="section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag"><i class="fas fa-user"></i> <span
-                        data-i18n="section.about_tag">Conóceme</span></span>
-                <h2 class="section-title" data-i18n="section.about_title">Sobre Mí</h2>
-            </div>
-
-            <div class="about-content">
-                <div class="about-text">
-                    <div class="objective-box">
-                        <h3><i class="fas fa-bullseye"></i> <span data-i18n="about.objective_title">Objetivo
-                                Profesional</span></h3>
-                        <p data-i18n="about.p1">
-                            Busco oportunidades que me permitan continuar desarrollando mis habilidades en el área de
-                            sistemas y programación, contribuyendo con mis conocimientos en soporte clínico, testing de
-                            software
-                            y resolución de problemas complejos. Mi meta es promover el éxito de los clientes con
-                            soluciones
-                            prácticas, ofreciendo una experiencia de servicio positiva.
+                        <p class="project-desc" data-i18n="projects.cafetin.desc">
+                            Aplicación full-stack para gestión integral de pedidos, ventas e inventario con sincronización en tiempo real y autenticación segura.
                         </p>
+
+                        <div class="arch-flow" aria-label="Flujo de arquitectura" data-i18n-aria="projects.arch_aria">
+                            <span class="arch-node">React</span>
+                            <span class="arch-connector" aria-hidden="true"><span class="arch-pulse"></span></span>
+                            <span class="arch-node" data-i18n="projects.cafetin.node2">Java REST API</span>
+                            <span class="arch-connector" aria-hidden="true"><span class="arch-pulse"></span></span>
+                            <span class="arch-node" data-i18n="projects.cafetin.node3">Supabase (PostgreSQL + Auth)</span>
+                        </div>
+
+                        <div class="inline-tags">
+                            <span>React</span>
+                            <span>Java</span>
+                            <span>Supabase</span>
+                            <span>PostgreSQL</span>
+                            <span>REST API</span>
+                        </div>
+                    </article>
+
+                    <!-- Proyecto 2 -->
+                    <article class="project-entry">
+                        <div class="project-top">
+                            <div>
+                                <span class="project-type" data-i18n="projects.react_apps.type">Frontend · CI/CD</span>
+                                <h3 data-i18n="projects.react_apps.title">Aplicaciones Web con React (4 Proyectos)</h3>
+                            </div>
+                            <!-- Reemplazar con enlaces directos o demos de Vercel cuando estén publicados -->
+                            <a href="https://github.com/jorgefigalloo?tab=repositories" target="_blank"
+                                rel="noopener noreferrer" class="project-ext-link">
+                                <span data-i18n="projects.view_repos">Ver repositorios en GitHub</span>
+                                <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                            </a>
+                        </div>
+
+                        <p class="project-desc" data-i18n="projects.react_apps.desc">
+                            Desarrollo de 4 aplicaciones web responsivas con JavaScript y TypeScript, estilos modernos con Tailwind CSS, control de versiones con Git/GitHub y despliegue continuo en Vercel.
+                        </p>
+
+                        <div class="arch-flow" aria-label="Flujo de arquitectura" data-i18n-aria="projects.arch_aria">
+                            <span class="arch-node">React + TypeScript</span>
+                            <span class="arch-connector" aria-hidden="true"><span class="arch-pulse"></span></span>
+                            <span class="arch-node">Tailwind CSS</span>
+                            <span class="arch-connector" aria-hidden="true"><span class="arch-pulse"></span></span>
+                            <span class="arch-node">GitHub + Vercel CI/CD</span>
+                        </div>
+
+                        <div class="inline-tags">
+                            <span>React</span>
+                            <span>TypeScript</span>
+                            <span>JavaScript</span>
+                            <span>Tailwind CSS</span>
+                            <span>Git</span>
+                            <span>Vercel</span>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- 3. Stack Técnico -->
+            <section id="habilidades" class="cv-section reveal">
+                <div class="section-head-row">
+                    <h2 class="section-kicker" data-i18n="section.skills">Stack Técnico & Explorando</h2>
+                    <div class="segmented-control stack-filters" role="group" aria-label="Filtrar tecnologías por rol"
+                        data-i18n-aria="skills.filter_aria">
+                        <button type="button" class="seg-btn active" data-stack-filter="all" aria-pressed="true"
+                            data-i18n="skills.filter_all">Todo</button>
+                        <button type="button" class="seg-btn" data-stack-filter="fullstack" aria-pressed="false"
+                            data-i18n="skills.filter_fullstack">Full Stack</button>
+                        <button type="button" class="seg-btn" data-stack-filter="qa" aria-pressed="false"
+                            data-i18n="skills.filter_qa">QA</button>
+                        <button type="button" class="seg-btn" data-stack-filter="data" aria-pressed="false"
+                            data-i18n="skills.filter_data">Data & SQL</button>
+                        <button type="button" class="seg-btn" data-stack-filter="infra" aria-pressed="false"
+                            data-i18n="skills.filter_infra">Sistemas & ERP</button>
+                        <button type="button" class="seg-btn" data-stack-filter="tools" aria-pressed="false"
+                            data-i18n="skills.filter_tools">Herramientas</button>
+                        <button type="button" class="seg-btn" data-stack-filter="learning" aria-pressed="false"
+                            data-i18n="skills.filter_learning">Explorando</button>
+                    </div>
+                </div>
+
+                <div class="stack-ledger">
+                    <div class="stack-row" data-stack-cat="fullstack">
+                        <span class="stack-label" data-i18n="skills.cat_languages">Lenguajes</span>
+                        <div class="inline-tags">
+                            <span>Java</span>
+                            <span>JavaScript</span>
+                            <span>TypeScript</span>
+                            <span>Python</span>
+                            <span>PHP</span>
+                            <span>C#</span>
+                            <span>C++</span>
+                        </div>
                     </div>
 
-                    <p data-i18n="about.p2">
-                        Soy un profesional joven con grandes expectativas de superación, dinámico, sociable y con un
-                        amplio
-                        interés en la tecnología. El <strong>buen trato, la paciencia, la responsabilidad y la
-                            honestidad</strong>
-                        son características innatas en mi persona.
-                    </p>
-                    <p data-i18n="about.p3">
-                        Mi experiencia dual en el <strong>sector clínico y de tecnología de la información</strong> me
-                        ha permitido
-                        desarrollar un enfoque integral en la solución de problemas. He trabajado en soporte de sistemas
-                        ERP,
-                        gestión de bases de datos y testing de software, siempre buscando optimizar procesos.
-                    </p>
-                    <p data-i18n="about.p4">
-                        Soy <strong>proactivo y perseverante</strong>, con una gran pasión por el aprendizaje continuo.
-                        Mi capacidad para trabajar bajo presión y en equipos multidisciplinarios me ha permitido
-                        colaborar eficientemente en la resolución de desafíos complejos.
-                    </p>
-                </div>
-                <div class="about-highlights">
-                    <div class="highlight-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <strong data-i18n="about.location_label">Ubicación</strong>
-                            <span data-i18n="about.location_value">Piura - Perú</span>
+                    <div class="stack-row" data-stack-cat="fullstack">
+                        <span class="stack-label" data-i18n="skills.cat_web">Web & APIs</span>
+                        <div class="inline-tags">
+                            <span>React</span>
+                            <span>Node.js</span>
+                            <span>Tailwind CSS</span>
+                            <span>CSS</span>
+                            <span>Supabase (PostgreSQL)</span>
+                            <span>APIs REST</span>
+                            <span>Vercel</span>
                         </div>
                     </div>
-                    <div class="highlight-item">
-                        <i class="fas fa-graduation-cap"></i>
-                        <div>
-                            <strong data-i18n="about.education_label">Formación</strong>
-                            <span data-i18n="about.education_value">Técnico en Análisis de Sistemas (Titulado)</span>
-                        </div>
-                    </div>
-                    <div class="highlight-item">
-                        <i class="fas fa-briefcase"></i>
-                        <div>
-                            <strong data-i18n="about.specialty_label">Especialidad</strong>
-                            <span data-i18n="about.specialty_value">QA Testing & Soporte TI</span>
-                        </div>
-                    </div>
-                    <div class="highlight-item">
-                        <i class="fas fa-language"></i>
-                        <div>
-                            <strong data-i18n="about.languages_label">Idiomas</strong>
-                            <span data-i18n="about.languages_value">Español (Nativo), Inglés (Intermedio)</span>
-                        </div>
-                    </div>
-                    <div class="highlight-item">
-                        <i class="fas fa-car"></i>
-                        <div>
-                            <strong data-i18n="about.licenses_label">Licencias</strong>
-                            <span data-i18n="about.licenses_value">Auto A-1, Moto</span>
-                        </div>
-                    </div>
-                    <div class="highlight-item">
-                        <i class="fas fa-clock"></i>
-                        <div>
-                            <strong data-i18n="about.availability_label">Disponibilidad</strong>
-                            <span data-i18n="about.availability_value">15 días | Piura, Híbrido, Remoto</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-content">
-                <h2 data-i18n="cta.title">¿Listo para trabajar juntos?</h2>
-                <p data-i18n="cta.text">Estoy disponible para nuevas oportunidades laborales. ¡Hablemos!</p>
-                <div class="cta-buttons">
-                    <a href="mailto:figallojorge@gmail.com" class="btn btn-primary btn-lg">
-                        <i class="fas fa-envelope"></i> figallojorge@gmail.com
-                    </a>
-                </div>
-                <div class="cta-social">
-                    <a href="https://www.linkedin.com/in/jorge-figallo-mesta-baab26234/" target="_blank"
-                        class="btn btn-outline">
-                        <i class="fab fa-linkedin-in"></i> LinkedIn
-                    </a>
-                    <a href="https://github.com/jorgefigalloo" target="_blank" class="btn btn-outline">
-                        <i class="fab fa-github"></i> GitHub
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+                    <div class="stack-row" data-stack-cat="qa">
+                        <span class="stack-label" data-i18n="skills.cat_qa">QA & Testing</span>
+                        <div class="inline-tags">
+                            <span>Postman</span>
+                            <span>Bruno</span>
+                            <span>Gherkin</span>
+                            <span>Serenity BDD</span>
+                            <span data-i18n="skills.tag_test_design">Diseño de Casos de Prueba</span>
+                            <span data-i18n="skills.tag_defect_mgmt">Gestión de Defectos</span>
+                            <span>Jira</span>
+                        </div>
+                    </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <span class="logo-icon">JF</span>
-                    <span>Jorge Angel Figallo Mesta</span>
-                </div>
-                <div class="footer-links">
-                    <a href="#inicio" data-i18n="nav.home">Inicio</a>
-                    <a href="#experiencia" data-i18n="nav.experience">Experiencia</a>
-                    <a href="#formacion" data-i18n="nav.education">Formación</a>
-                    <a href="#habilidades" data-i18n="nav.skills">Habilidades</a>
-                    <a href="#certificaciones" data-i18n="nav.certifications">Certificaciones</a>
-                    <a href="#sobre-mi" data-i18n="nav.about">Sobre Mí</a>
-                </div>
-                <div class="footer-social">
-                    <a href="https://www.linkedin.com/in/jorge-figallo-mesta-baab26234/" target="_blank"><i
-                            class="fab fa-linkedin-in"></i></a>
-                    <a href="https://github.com/jorgefigalloo" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="mailto:figallojorge@gmail.com"><i class="fas fa-envelope"></i></a>
+                    <div class="stack-row" data-stack-cat="data">
+                        <span class="stack-label" data-i18n="skills.cat_data">Data & SQL</span>
+                        <div class="inline-tags">
+                            <span data-i18n="skills.tag_sql_adv">SQL Avanzado</span>
+                            <span>MySQL</span>
+                            <span>SQL Server</span>
+                            <span>PostgreSQL</span>
+                            <span>DataGrip</span>
+                            <span data-i18n="skills.tag_etl">Procesos ETL</span>
+                            <span data-i18n="skills.tag_sap_sync">SAP ↔ Sistema Clínico</span>
+                            <span data-i18n="skills.tag_python_data">Python para Datos</span>
+                        </div>
+                    </div>
 
+                    <div class="stack-row" data-stack-cat="infra">
+                        <span class="stack-label" data-i18n="skills.cat_infra">Sistemas & ERP</span>
+                        <div class="inline-tags">
+                            <span>SAP Business One</span>
+                            <span>Windows Server 2012</span>
+                            <span>Linux (NTP/DNS/DHCP)</span>
+                            <span>Ubuntu</span>
+                            <span>Firewall Fortinet</span>
+                        </div>
+                    </div>
+
+                    <div class="stack-row" data-stack-cat="tools">
+                        <span class="stack-label" data-i18n="skills.cat_tools">Herramientas</span>
+                        <div class="inline-tags">
+                            <span>Git</span>
+                            <span>GitHub</span>
+                            <span>IntelliJ IDEA</span>
+                            <span>Visual Studio</span>
+                            <span>VS Code</span>
+                            <span>Termius</span>
+                            <span>Figma</span>
+                            <span>Sublime Text</span>
+                        </div>
+                    </div>
+
+                    <div class="stack-row learning-row" data-stack-cat="learning">
+                        <span class="stack-label">
+                            <span class="learning-dot" aria-hidden="true"></span>
+                            <span data-i18n="skills.cat_learning">Explorando</span>
+                        </span>
+                        <div class="inline-tags">
+                            <span>MongoDB</span>
+                            <span>DynamoDB</span>
+                            <span>Redis</span>
+                            <span>SQS / Kafka</span>
+                            <span>AWS</span>
+                            <span>Docker</span>
+                            <span>Kubernetes</span>
+                            <span>CI/CD</span>
+                            <span>Jest</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="footer-bottom">
-                <p data-i18n="footer.copyright">&copy; 2025 Jorge Angel Figallo Mesta. Todos los derechos reservados.
+            </section>
+
+            <!-- 4. Formación & Certificaciones -->
+            <section id="formacion" class="cv-section reveal">
+                <h2 class="section-kicker" data-i18n="section.education">Formación & Certificaciones</h2>
+
+                <div class="edu-list">
+                    <div class="edu-row">
+                        <span class="edu-year">2023 — 2026</span>
+                        <div>
+                            <h3 data-i18n="education.ucv.degree">Bachiller en Ingeniería de Sistemas</h3>
+                            <p class="edu-org" data-i18n="education.ucv.institution">Universidad César Vallejo (UCV)</p>
+                            <p class="edu-note" data-i18n="education.ucv.detail">Carrera concluida, tesis sustentada y aprobada. Título Profesional en trámite.</p>
+                        </div>
+                    </div>
+
+                    <div class="edu-row">
+                        <span class="edu-year">2014 — 2017</span>
+                        <div>
+                            <h3 data-i18n="education.etsunp.degree">Técnico en Análisis de Sistemas</h3>
+                            <p class="edu-org" data-i18n="education.etsunp.institution">ETSUNP · Universidad Nacional de Piura (UNP)</p>
+                            <p class="edu-note" data-i18n="education.etsunp.detail">Título Profesional Técnico.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="sub-kicker" data-i18n="certifications.heading">Certificaciones & Capacitaciones</h3>
+                <div class="interactive-list cert-accordion">
+                    <div class="cert-item is-open">
+                        <button type="button" class="cert-trigger" aria-expanded="true" aria-controls="cert-panel-1">
+                            <span class="cert-year">2025</span>
+                            <span class="cert-title-wrap">
+                                <strong data-i18n="certifications.testing.title">Testing & QA</strong>
+                                <span data-i18n="certifications.testing.issuer">NTT DATA</span>
+                            </span>
+                            <span class="cert-chevron" aria-hidden="true">+</span>
+                        </button>
+                        <div class="cert-panel" id="cert-panel-1">
+                            <div class="cert-panel-inner">
+                                <p data-i18n="certifications.testing.desc">
+                                    Técnicas de diseño de pruebas (partición de equivalencia, valores límite, tabla de decisión), testing de APIs con Postman y Bruno, automatización con Gherkin en Serenity BDD y gestión de defectos.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cert-item">
+                        <button type="button" class="cert-trigger" aria-expanded="false" aria-controls="cert-panel-2">
+                            <span class="cert-year">2026</span>
+                            <span class="cert-title-wrap">
+                                <strong data-i18n="certifications.web_mobile.title">Desarrollador Web y Aplicaciones Móviles</strong>
+                                <span data-i18n="certifications.web_mobile.issuer">Universidad César Vallejo</span>
+                            </span>
+                            <span class="cert-chevron" aria-hidden="true">+</span>
+                        </button>
+                        <div class="cert-panel" id="cert-panel-2">
+                            <div class="cert-panel-inner">
+                                <p data-i18n="certifications.web_mobile.desc">
+                                    Certificación intermedia de la Facultad de Ingeniería y Arquitectura orientada al desarrollo de soluciones web y aplicaciones móviles.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cert-item">
+                        <button type="button" class="cert-trigger" aria-expanded="false" aria-controls="cert-panel-3">
+                            <span class="cert-year">2025</span>
+                            <span class="cert-title-wrap">
+                                <strong data-i18n="certifications.helpdesk.title">Asistente de Help Desk</strong>
+                                <span data-i18n="certifications.helpdesk.issuer">Universidad César Vallejo</span>
+                            </span>
+                            <span class="cert-chevron" aria-hidden="true">+</span>
+                        </button>
+                        <div class="cert-panel" id="cert-panel-3">
+                            <div class="cert-panel-inner">
+                                <p data-i18n="certifications.helpdesk.desc">
+                                    Certificación intermedia de la Facultad de Ingeniería y Arquitectura enfocada en soporte técnico, atención de incidencias y continuidad operativa TI.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cert-item">
+                        <button type="button" class="cert-trigger" aria-expanded="false" aria-controls="cert-panel-4">
+                            <span class="cert-year">2023</span>
+                            <span class="cert-title-wrap">
+                                <strong data-i18n="certifications.python.title">Programación en Python</strong>
+                                <span data-i18n="certifications.python.issuer">InGenio Learning</span>
+                            </span>
+                            <span class="cert-chevron" aria-hidden="true">+</span>
+                        </button>
+                        <div class="cert-panel" id="cert-panel-4">
+                            <div class="cert-panel-inner">
+                                <p data-i18n="certifications.python.desc">
+                                    Curso acreditado de 32 horas lectivas orientado a programación en Python, manejo de datos y automatización de procesos.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cert-item">
+                        <button type="button" class="cert-trigger" aria-expanded="false" aria-controls="cert-panel-5">
+                            <span class="cert-year">2018</span>
+                            <span class="cert-title-wrap">
+                                <strong data-i18n="certifications.cisco.title">Cisco CCNA Routing & Switching</strong>
+                                <span data-i18n="certifications.cisco.issuer">UDEP / Cisco Networking Academy</span>
+                            </span>
+                            <span class="cert-chevron" aria-hidden="true">+</span>
+                        </button>
+                        <div class="cert-panel" id="cert-panel-5">
+                            <div class="cert-panel-inner">
+                                <p data-i18n="certifications.cisco.desc">
+                                    Tecnologías WAN, PPP/PPPoE, GRE, eBGP, listas ACL IPv4/IPv6, QoS, seguridad LAN y diagnóstico de conectividad de punta a punta.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cert-item">
+                        <button type="button" class="cert-trigger" aria-expanded="false" aria-controls="cert-panel-6">
+                            <span class="cert-year">2020</span>
+                            <span class="cert-title-wrap">
+                                <strong data-i18n="certifications.iso.title">Norma ISO 45001:2018</strong>
+                                <span data-i18n="certifications.iso.issuer">ICC Adviser</span>
+                            </span>
+                            <span class="cert-chevron" aria-hidden="true">+</span>
+                        </button>
+                        <div class="cert-panel" id="cert-panel-6">
+                            <div class="cert-panel-inner">
+                                <p data-i18n="certifications.iso.desc">
+                                    Interpretación de la norma ISO 45001:2018 y sistemas de gestión de seguridad y salud en el trabajo (8 horas académicas).
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="https://drive.google.com/drive/folders/1dxnH8mFEA18HHpyjgZ78JyEVPkj_vnNW?usp=sharing"
+                    target="_blank" rel="noopener noreferrer" class="drive-link">
+                    <span data-i18n="certifications.drive_link">Ver certificados digitales en Google Drive</span>
+                    <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                </a>
+            </section>
+
+            <!-- 5. Contacto -->
+            <section id="contacto" class="cv-section reveal">
+                <h2 class="section-kicker" data-i18n="section.contact">Contacto</h2>
+                <h3 class="contact-title" data-i18n="cta.title">Hablemos</h3>
+                <p class="contact-desc" data-i18n="cta.text">
+                    Disponible para roles en Desarrollo Full Stack Junior, QA Testing o Análisis de Datos (remoto,
+                    híbrido o en Piura).
                 </p>
-            </div>
-        </div>
-    </footer>
 
-    <script src="script.js"></script>
+                <div class="contact-actions">
+                    <button type="button" class="btn btn-solid copy-email-btn" data-copy-email="figallojorge@gmail.com">
+                        <svg class="svg-icon icon-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        <svg class="svg-icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <span data-i18n="cta.copy_email">Copiar figallojorge@gmail.com</span>
+                    </button>
+                    <a href="mailto:figallojorge@gmail.com" class="btn btn-subtle">
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                        <span data-i18n="cta.send_email">Enviar correo</span>
+                    </a>
+                    <a href="https://wa.me/51920025691?text=Hola%20Jorge%2C%20vi%20tu%20CV%20web%20y%20me%20gustar%C3%ADa%20contactarte."
+                        target="_blank" rel="noopener noreferrer" class="btn btn-subtle">
+                        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                        <span>WhatsApp</span>
+                    </a>
+                    <a href="https://drive.google.com/drive/folders/1dxnH8mFEA18HHpyjgZ78JyEVPkj_vnNW?usp=sharing"
+                        target="_blank" rel="noopener noreferrer" class="btn btn-subtle">
+                        <i class="fas fa-arrow-down" aria-hidden="true"></i>
+                        <span data-i18n="actions.download_cv">Descargar CV</span>
+                    </a>
+                    <button type="button" class="btn btn-subtle" id="contact-print-btn">
+                        <i class="fas fa-print" aria-hidden="true"></i>
+                        <span data-i18n="actions.print_cv">Imprimir CV</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Editorial Footer -->
+            <footer class="stream-footer">
+                <p data-i18n="footer.copyright">© 2026 Jorge Figallo M. · Piura, Perú</p>
+                <button type="button" class="kbd-hint" id="footer-cmd-trigger" data-i18n="footer.cmd_hint">
+                    Presiona Ctrl+K para navegación rápida
+                </button>
+            </footer>
+        </div>
+    </main>
+
+    <!-- Command Palette Modal (Ctrl+K / Cmd+K) -->
+    <div class="cmd-backdrop" id="cmd-modal" role="dialog" aria-modal="true" aria-labelledby="cmd-title" hidden>
+        <div class="cmd-dialog">
+            <div class="cmd-header">
+                <i class="fas fa-search" aria-hidden="true"></i>
+                <h2 id="cmd-title" class="sr-only" data-i18n="cmd.title">Paleta de comandos</h2>
+                <input type="text" id="cmd-input" class="cmd-input" placeholder="Buscar sección o acción..."
+                    data-i18n-placeholder="cmd.placeholder" autocomplete="off">
+                <button type="button" class="cmd-esc" id="cmd-close" aria-label="Cerrar paleta"
+                    data-i18n-aria="cmd.close_aria">ESC</button>
+            </div>
+            <ul class="cmd-results" id="cmd-results" role="listbox"></ul>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true">
+        <i class="fas fa-check" aria-hidden="true"></i>
+        <span id="toast-message"></span>
+    </div>
 </body>
 
 </html>
