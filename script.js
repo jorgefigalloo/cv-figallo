@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+function init() {
     const html = document.documentElement;
     const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const isMac = /Mac|iPhone|iPad|iPod/i.test(navigator.platform || '');
@@ -662,12 +662,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (stage && badgeRig && badgeCard && lanyardSvg) {
         const state = {
-            x: prefersReducedMotion ? 0 : 18,
-            y: prefersReducedMotion ? 0 : -48,
+            x: 34,
+            y: -85,
             vx: 0,
             vy: 0,
-            angle: prefersReducedMotion ? 0 : -10,
-            vAngle: prefersReducedMotion ? 0 : 1.5,
+            angle: -15,
+            vAngle: 3.5,
             dragging: false,
             pointerId: null,
             startClientX: 0,
@@ -676,6 +676,7 @@ document.addEventListener('DOMContentLoaded', () => {
             startY: 0,
             lastClientX: 0,
             lastClientY: 0,
+            lastHoverX: null,
             maxDragDist: 0,
             tiltX: 0,
             tiltY: 0,
@@ -684,7 +685,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let cachedCx = 190;
         let cachedRestY = 96;
-        let cachedCardRect = null;
 
         function measureStage() {
             const w = stage.clientWidth || 380;
@@ -693,7 +693,6 @@ document.addEventListener('DOMContentLoaded', () => {
             cachedRestY = window.innerWidth <= 640 ? 74 : 96;
             lanyardSvg.setAttribute('viewBox', `0 0 ${w} ${h}`);
             if (strapTopMount) strapTopMount.setAttribute('transform', `translate(${cachedCx}, 0)`);
-            cachedCardRect = badgeCard.getBoundingClientRect();
         }
 
         function updateRender() {
@@ -713,163 +712,162 @@ document.addEventListener('DOMContentLoaded', () => {
             if (strapRightBody) strapRightBody.setAttribute('d', rightPath);
             if (strapRightStitch) strapRightStitch.setAttribute('d', rightPath);
 
-            if (badgeTilt && !prefersReducedMotion) {
+            if (badgeTilt) {
                 badgeTilt.style.transform = `rotateX(${state.tiltX.toFixed(2)}deg) rotateY(${state.tiltY.toFixed(2)}deg)`;
             }
         }
 
         measureStage();
 
-        if (prefersReducedMotion) {
+        let isStageVisible = true;
+        let rafHandle = null;
+        let lastTime = performance.now();
+
+        function tick(now) {
+            rafHandle = null;
+            if (!isStageVisible || document.hidden) return;
+
+            const dt = Math.min(0.032, (now - lastTime) / 1000 || 0.016);
+            lastTime = now;
+            state.time += dt;
+
+            if (!state.dragging) {
+                const kSpring = 34;
+                const kDamp = 4.2;
+                const ax = -kSpring * state.x - kDamp * state.vx;
+                const ay = -kSpring * state.y - kDamp * state.vy;
+
+                state.vx += ax * dt;
+                state.vy += ay * dt;
+                state.x += state.vx * dt;
+                state.y += state.vy * dt;
+
+                const ambientTarget = Math.sin(state.time * 1.35) * 2.2;
+                const targetAngle = ambientTarget - state.x * 0.14 - state.vx * 0.04;
+                const aAngle = 38 * (targetAngle - state.angle) - 4.0 * state.vAngle;
+                state.vAngle += aAngle * dt;
+                state.angle += state.vAngle * dt;
+            }
+
             updateRender();
-            badgeCard.addEventListener('click', (e) => {
-                if (e.target.closest('a, button')) return;
-                setBadgeFlip(!isFlipped);
-            });
-        } else {
-            let isStageVisible = true;
-            let rafHandle = null;
-            let lastTime = performance.now();
+            rafHandle = requestAnimationFrame(tick);
+        }
 
-            function tick(now) {
-                rafHandle = null;
-                if (!isStageVisible || document.hidden) return;
-
-                const dt = Math.min(0.032, (now - lastTime) / 1000 || 0.016);
-                lastTime = now;
-                state.time += dt;
-
-                if (!state.dragging) {
-                    const kSpring = 52;
-                    const kDamp = 6.8;
-                    const ax = -kSpring * state.x - kDamp * state.vx;
-                    const ay = -kSpring * state.y - kDamp * state.vy;
-
-                    state.vx += ax * dt;
-                    state.vy += ay * dt;
-                    state.x += state.vx * dt;
-                    state.y += state.vy * dt;
-
-                    const ambientTarget = Math.sin(state.time * 1.15) * 0.85;
-                    const targetAngle = ambientTarget - state.x * 0.12 - state.vx * 0.035;
-                    const aAngle = 48 * (targetAngle - state.angle) - 5.4 * state.vAngle;
-                    state.vAngle += aAngle * dt;
-                    state.angle += state.vAngle * dt;
-                }
-
-                updateRender();
+        function startLoop() {
+            if (rafHandle === null && isStageVisible && !document.hidden) {
+                lastTime = performance.now();
                 rafHandle = requestAnimationFrame(tick);
             }
-
-            function startLoop() {
-                if (rafHandle === null && isStageVisible && !document.hidden) {
-                    lastTime = performance.now();
-                    rafHandle = requestAnimationFrame(tick);
-                }
-            }
-
-            if ('IntersectionObserver' in window) {
-                const stageObserver = new IntersectionObserver((entries) => {
-                    isStageVisible = entries[0].isIntersecting;
-                    if (isStageVisible) startLoop();
-                }, { threshold: 0.02 });
-                stageObserver.observe(stage);
-            }
-
-            document.addEventListener('visibilitychange', () => {
-                if (!document.hidden && isStageVisible) startLoop();
-            });
-
-            startLoop();
-
-            badgeCard.addEventListener('pointerenter', () => {
-                cachedCardRect = badgeCard.getBoundingClientRect();
-            });
-
-            badgeCard.addEventListener('pointerdown', (e) => {
-                if (e.button !== 0 && e.pointerType === 'mouse') return;
-                if (e.target.closest('a, button')) return;
-
-                cachedCardRect = badgeCard.getBoundingClientRect();
-                state.dragging = true;
-                state.pointerId = e.pointerId;
-                state.startClientX = e.clientX;
-                state.startClientY = e.clientY;
-                state.lastClientX = e.clientX;
-                state.lastClientY = e.clientY;
-                state.startX = state.x;
-                state.startY = state.y;
-                state.maxDragDist = 0;
-                state.vx = 0;
-                state.vy = 0;
-
-                badgeCard.classList.add('is-dragging');
-                badgeCard.setPointerCapture(e.pointerId);
-                startLoop();
-            });
-
-            badgeCard.addEventListener('pointermove', (e) => {
-                if (!cachedCardRect) cachedCardRect = badgeCard.getBoundingClientRect();
-                const rect = cachedCardRect;
-                if (rect.width > 0 && rect.height > 0) {
-                    const px = Math.max(0, Math.min(100, ((e.clientX - rect.left) / rect.width) * 100));
-                    const py = Math.max(0, Math.min(100, ((e.clientY - rect.top) / rect.height) * 100));
-                    badgeCard.style.setProperty('--holo-x', `${px.toFixed(1)}%`);
-                    badgeCard.style.setProperty('--holo-y', `${py.toFixed(1)}%`);
-                    badgeCard.style.setProperty('--holo-opacity', '0.52');
-
-                    if (!state.dragging) {
-                        const nx = (px / 50) - 1;
-                        const ny = (py / 50) - 1;
-                        state.tiltX = -ny * 10;
-                        state.tiltY = nx * 11;
-                    }
-                }
-
-                if (!state.dragging || e.pointerId !== state.pointerId) return;
-
-                const dxTotal = e.clientX - state.startClientX;
-                const dyTotal = e.clientY - state.startClientY;
-                state.maxDragDist = Math.max(state.maxDragDist, Math.hypot(dxTotal, dyTotal));
-
-                state.x = Math.max(-165, Math.min(165, state.startX + dxTotal));
-                state.y = Math.max(-60, Math.min(115, state.startY + dyTotal));
-
-                const stepDx = e.clientX - state.lastClientX;
-                const stepDy = e.clientY - state.lastClientY;
-                state.vx = stepDx * 26;
-                state.vy = stepDy * 26;
-                state.angle = Math.max(-22, Math.min(22, -state.x * 0.11 - stepDx * 0.45));
-                state.vAngle = -stepDx * 0.6;
-
-                state.lastClientX = e.clientX;
-                state.lastClientY = e.clientY;
-            });
-
-            function releasePointer(e) {
-                if (!state.dragging || e.pointerId !== state.pointerId) return;
-                state.dragging = false;
-                badgeCard.classList.remove('is-dragging');
-                if (badgeCard.hasPointerCapture(e.pointerId)) {
-                    badgeCard.releasePointerCapture(e.pointerId);
-                }
-
-                if (state.maxDragDist < 8) {
-                    setBadgeFlip(!isFlipped);
-                    state.vAngle += isFlipped ? 12 : -12;
-                }
-                startLoop();
-            }
-
-            badgeCard.addEventListener('pointerup', releasePointer);
-            badgeCard.addEventListener('pointercancel', releasePointer);
-
-            badgeCard.addEventListener('pointerleave', () => {
-                state.tiltX = 0;
-                state.tiltY = 0;
-                badgeCard.style.setProperty('--holo-opacity', '0.24');
-            });
         }
+
+        if ('IntersectionObserver' in window) {
+            const stageObserver = new IntersectionObserver((entries) => {
+                isStageVisible = entries[0].isIntersecting;
+                if (isStageVisible) startLoop();
+            }, { threshold: 0 });
+            stageObserver.observe(stage);
+        }
+
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden && isStageVisible) startLoop();
+        });
+
+        startLoop();
+
+        badgeCard.addEventListener('pointerenter', (e) => {
+            state.lastHoverX = e.clientX;
+            startLoop();
+        });
+
+        badgeCard.addEventListener('pointerdown', (e) => {
+            if (e.button !== 0 && e.pointerType === 'mouse') return;
+            if (e.target.closest('a, button')) return;
+
+            state.dragging = true;
+            state.pointerId = e.pointerId;
+            state.startClientX = e.clientX;
+            state.startClientY = e.clientY;
+            state.lastClientX = e.clientX;
+            state.lastClientY = e.clientY;
+            state.startX = state.x;
+            state.startY = state.y;
+            state.maxDragDist = 0;
+            state.vx = 0;
+            state.vy = 0;
+
+            badgeCard.classList.add('is-dragging');
+            badgeCard.setPointerCapture(e.pointerId);
+            startLoop();
+        });
+
+        badgeCard.addEventListener('pointermove', (e) => {
+            const rect = badgeCard.getBoundingClientRect();
+            if (rect.width > 0 && rect.height > 0) {
+                const px = Math.max(0, Math.min(100, ((e.clientX - rect.left) / rect.width) * 100));
+                const py = Math.max(0, Math.min(100, ((e.clientY - rect.top) / rect.height) * 100));
+                badgeCard.style.setProperty('--holo-x', `${px.toFixed(1)}%`);
+                badgeCard.style.setProperty('--holo-y', `${py.toFixed(1)}%`);
+                badgeCard.style.setProperty('--holo-opacity', '0.62');
+
+                if (!state.dragging) {
+                    const nx = (px / 50) - 1;
+                    const ny = (py / 50) - 1;
+                    state.tiltX = -ny * 13;
+                    state.tiltY = nx * 14;
+
+                    if (state.lastHoverX !== null) {
+                        const hoverDx = Math.max(-24, Math.min(24, e.clientX - state.lastHoverX));
+                        state.vAngle = Math.max(-28, Math.min(28, state.vAngle - hoverDx * 0.14));
+                        state.vx += hoverDx * 0.45;
+                    }
+                    state.lastHoverX = e.clientX;
+                }
+            }
+
+            if (!state.dragging || e.pointerId !== state.pointerId) return;
+
+            const dxTotal = e.clientX - state.startClientX;
+            const dyTotal = e.clientY - state.startClientY;
+            state.maxDragDist = Math.max(state.maxDragDist, Math.hypot(dxTotal, dyTotal));
+
+            state.x = Math.max(-165, Math.min(165, state.startX + dxTotal));
+            state.y = Math.max(-60, Math.min(115, state.startY + dyTotal));
+
+            const stepDx = e.clientX - state.lastClientX;
+            const stepDy = e.clientY - state.lastClientY;
+            state.vx = stepDx * 26;
+            state.vy = stepDy * 26;
+            state.angle = Math.max(-24, Math.min(24, -state.x * 0.12 - stepDx * 0.45));
+            state.vAngle = -stepDx * 0.6;
+
+            state.lastClientX = e.clientX;
+            state.lastClientY = e.clientY;
+        });
+
+        function releasePointer(e) {
+            if (!state.dragging || e.pointerId !== state.pointerId) return;
+            state.dragging = false;
+            badgeCard.classList.remove('is-dragging');
+            if (badgeCard.hasPointerCapture(e.pointerId)) {
+                badgeCard.releasePointerCapture(e.pointerId);
+            }
+
+            if (state.maxDragDist < 8) {
+                setBadgeFlip(!isFlipped);
+                state.vAngle += isFlipped ? 14 : -14;
+            }
+            startLoop();
+        }
+
+        badgeCard.addEventListener('pointerup', releasePointer);
+        badgeCard.addEventListener('pointercancel', releasePointer);
+
+        badgeCard.addEventListener('pointerleave', () => {
+            state.tiltX = 0;
+            state.tiltY = 0;
+            state.lastHoverX = null;
+            badgeCard.style.setProperty('--holo-opacity', '0.24');
+        });
 
         let resizeTimer = null;
         window.addEventListener('resize', () => {
@@ -1209,4 +1207,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!rafId) rafId = requestAnimationFrame(animateAura);
         }, { passive: true });
     }
-});
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+} else {
+    init();
+}

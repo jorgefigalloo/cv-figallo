@@ -369,7 +369,10 @@
             <!-- 1. Experiencia Laboral -->
             <section id="experiencia" class="cv-section reveal">
                 <div class="section-head-row">
-                    <h2 class="section-kicker" data-i18n="section.experience">Experiencia Laboral</h2>
+                    <div class="section-heading">
+                        <span class="section-index" aria-hidden="true">01</span>
+                        <h2 class="section-title" data-i18n="section.experience">Experiencia Laboral</h2>
+                    </div>
                     <div class="segmented-control exp-filter-bar" role="group"
                         aria-label="Filtrar áreas de experiencia" data-i18n-aria="experience.filter_aria">
                         <button type="button" class="seg-btn active" data-exp-filter="all" aria-pressed="true"
@@ -486,7 +489,10 @@
 
             <!-- 2. Proyectos -->
             <section id="proyectos" class="cv-section reveal">
-                <h2 class="section-kicker" data-i18n="section.projects">Proyectos Personales</h2>
+                <div class="section-heading">
+                    <span class="section-index" aria-hidden="true">02</span>
+                    <h2 class="section-title" data-i18n="section.projects">Proyectos Personales</h2>
+                </div>
 
                 <div class="interactive-list projects-list">
                     <!-- Proyecto 1 -->
@@ -567,7 +573,10 @@
             <!-- 3. Stack Técnico -->
             <section id="habilidades" class="cv-section reveal">
                 <div class="section-head-row">
-                    <h2 class="section-kicker" data-i18n="section.skills">Stack Técnico & Explorando</h2>
+                    <div class="section-heading">
+                        <span class="section-index" aria-hidden="true">03</span>
+                        <h2 class="section-title" data-i18n="section.skills">Stack Técnico & Explorando</h2>
+                    </div>
                     <div class="segmented-control stack-filters" role="group" aria-label="Filtrar tecnologías por rol"
                         data-i18n-aria="skills.filter_aria">
                         <button type="button" class="seg-btn active" data-stack-filter="all" aria-pressed="true"
@@ -688,7 +697,10 @@
 
             <!-- 4. Formación & Certificaciones -->
             <section id="formacion" class="cv-section reveal">
-                <h2 class="section-kicker" data-i18n="section.education">Formación & Certificaciones</h2>
+                <div class="section-heading">
+                    <span class="section-index" aria-hidden="true">04</span>
+                    <h2 class="section-title" data-i18n="section.education">Formación & Certificaciones</h2>
+                </div>
 
                 <div class="edu-list">
                     <div class="edu-row">
@@ -830,44 +842,49 @@
 
             <!-- 5. Contacto -->
             <section id="contacto" class="cv-section reveal">
-                <h2 class="section-kicker" data-i18n="section.contact">Contacto</h2>
-                <h3 class="contact-title" data-i18n="cta.title">Hablemos</h3>
-                <p class="contact-desc" data-i18n="cta.text">
-                    Disponible para roles en Desarrollo Full Stack Junior, QA Testing o Análisis de Datos (remoto,
-                    híbrido o en Piura).
-                </p>
+                <div class="section-heading">
+                    <span class="section-index" aria-hidden="true">05</span>
+                    <h2 class="section-title" data-i18n="section.contact">Contacto</h2>
+                </div>
+                <div class="contact-box">
+                    <h3 class="contact-title" data-i18n="cta.title">Hablemos</h3>
+                    <p class="contact-desc" data-i18n="cta.text">
+                        Disponible para roles en Desarrollo Full Stack Junior, QA Testing o Análisis de Datos (remoto,
+                        híbrido o en Piura).
+                    </p>
 
-                <div class="contact-actions">
-                    <button type="button" class="btn btn-solid copy-email-btn" data-copy-email="figallojorge@gmail.com">
-                        <svg class="svg-icon icon-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                        </svg>
-                        <svg class="svg-icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
-                        <span data-i18n="cta.copy_email">Copiar figallojorge@gmail.com</span>
-                    </button>
-                    <a href="mailto:figallojorge@gmail.com" class="btn btn-subtle">
-                        <i class="fas fa-envelope" aria-hidden="true"></i>
-                        <span data-i18n="cta.send_email">Enviar correo</span>
-                    </a>
-                    <a href="https://wa.me/51920025691?text=Hola%20Jorge%2C%20vi%20tu%20CV%20web%20y%20me%20gustar%C3%ADa%20contactarte."
-                        target="_blank" rel="noopener noreferrer" class="btn btn-subtle">
-                        <i class="fab fa-whatsapp" aria-hidden="true"></i>
-                        <span>WhatsApp</span>
-                    </a>
-                    <a href="https://drive.google.com/drive/folders/1dxnH8mFEA18HHpyjgZ78JyEVPkj_vnNW?usp=sharing"
-                        target="_blank" rel="noopener noreferrer" class="btn btn-subtle">
-                        <i class="fas fa-arrow-down" aria-hidden="true"></i>
-                        <span data-i18n="actions.download_cv">Descargar CV</span>
-                    </a>
-                    <button type="button" class="btn btn-subtle" id="contact-print-btn">
-                        <i class="fas fa-print" aria-hidden="true"></i>
-                        <span data-i18n="actions.print_cv">Imprimir CV</span>
-                    </button>
+                    <div class="contact-actions">
+                        <button type="button" class="btn btn-solid copy-email-btn" data-copy-email="figallojorge@gmail.com">
+                            <svg class="svg-icon icon-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                            <svg class="svg-icon icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span data-i18n="cta.copy_email">Copiar figallojorge@gmail.com</span>
+                        </button>
+                        <a href="mailto:figallojorge@gmail.com" class="btn btn-subtle">
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                            <span data-i18n="cta.send_email">Enviar correo</span>
+                        </a>
+                        <a href="https://wa.me/51920025691?text=Hola%20Jorge%2C%20vi%20tu%20CV%20web%20y%20me%20gustar%C3%ADa%20contactarte."
+                            target="_blank" rel="noopener noreferrer" class="btn btn-subtle">
+                            <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                            <span>WhatsApp</span>
+                        </a>
+                        <a href="https://drive.google.com/drive/folders/1dxnH8mFEA18HHpyjgZ78JyEVPkj_vnNW?usp=sharing"
+                            target="_blank" rel="noopener noreferrer" class="btn btn-subtle">
+                            <i class="fas fa-arrow-down" aria-hidden="true"></i>
+                            <span data-i18n="actions.download_cv">Descargar CV</span>
+                        </a>
+                        <button type="button" class="btn btn-subtle" id="contact-print-btn">
+                            <i class="fas fa-print" aria-hidden="true"></i>
+                            <span data-i18n="actions.print_cv">Imprimir CV</span>
+                        </button>
+                    </div>
                 </div>
             </section>
 
